@@ -29,6 +29,40 @@ list_of_dicts = [
   ("user","clicks","on link"),
   ("user","closes","web browser"),
 ]},
+# TODO: the following intersects with "user types REISUB"
+# {(("user","types", "URL of website")):[
+#   ("keyboard key","press","mechanical switch"),
+#   ("mechanical switch","shorts","electrical circuit")
+# ]},
+{("web browser","shows","webpage"):[
+  ("web browser","separate path from domain name from protocol"),
+  ("web browser","browser checks the cache for a DNS record to find the corresponding IP address of URL"),
+  ("web browser","initiates a TCP connection with the server"),
+  ("web browser","sends an HTTP request to the server"),
+  ("server","handles the request"),
+  ("server","sends back an HTTP response"),
+  ("web browser","renders the HTML content"),
+  ("web browser","sends additional requests for objects embedded in the html file - CSS files, images, javascript"),
+  ("server","sends back additional content"),
+  ("web browser","Process CSS markup and build the CSSOM tree"),
+  ("web browser","Combine the DOM and CSSOM into a render tree"),
+  ("web browser","Run the layout on the render tree to compute the geometry of each node - layout/reflow"),
+  ("web browser","Paint the individual nodes to the screen")
+]},
+{("web browser","browser checks the cache for a DNS record to find the corresponding IP address of URL"):[
+  ("web browser","checks the","browser's in-memory cache"),
+  ("web browser","checks the","operating system cache"),
+]},
+{("web browser","checks the","operating system cache"):[
+  ("web browser", "make a system call to", "operating system"),
+  ("operating system","checks the","local cache in OS"),
+  ("operating system","check the","router cache")
+]},
+{("operating system","check the router cache"):[
+  ("operating system","sends request to","router"),
+  ("router","checks","local cache on router"),
+  ("router","checks the","ISP cache")
+]},
 {("user","opens","web browser"):[
   ("user","moves pointer on desktop to browser icon using","mouse"),
   ("user","clicks on","desktop broswer icon"),
@@ -59,7 +93,8 @@ list_of_dicts = [
 {(("user","types", "REISUB")):[
   ("keyboard key","press","mechanical switch"),
   ("mechanical switch","shorts","electrical circuit")
-]}]
+]}
+]
 
 
 # https://github.com/pygraphviz/pygraphviz/issues/93

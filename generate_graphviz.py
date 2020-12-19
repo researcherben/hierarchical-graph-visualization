@@ -7,13 +7,26 @@ from pygraphviz import AGraph
 import random
 from typing import Tuple
 
+# import the data structures from a separate file
 from browse_internet import list_of_dicts, cross_phase_transitions
 
-def smush(tup):
+def smush(tup: Tuple[str, str, str]) -> str:
     """
     since I'm using tuples and need to get strings, merge the tuple items with underscores
     """
     return '_'.join(tup).replace(" ","_")
+
+def with_spaces(tup: Tuple[str, str, str]) -> str:
+    tup_as_str = ' '.join(tup)
+    if len(tup_as_str)>60: # insert line breaks in long strings to reduce width of nodes
+        ary = tup_as_str.split(" ")
+        new_str = ""
+        for index, wrd in enumerate(ary):
+            new_str+=wrd+" "
+            if index == int(len(ary)/2):
+                new_str += "\n"
+        return new_str.strip()
+    return tup_as_str
 
 def item_is_key_in_list_of_dicts(item_to_test: Tuple[str, str, str], list_of_dicts: list) -> bool:
     """
@@ -47,11 +60,11 @@ def recurse_generate_svg(list_of_subgraphs: list,
                 #unique_subgraph_name = item_without_spaces#+"_"+str(random.randint(1000,9999))
                 if (item_is_key_in_list_of_dicts(item, list_of_dicts)):
                     sg = use_case.subgraph(name="cluster_"+smush(item),
-                                           label=' '.join(item),
+                                           label=with_spaces(item),
                                            href=fnamel1+smush(item)+".svg")
                 else:
                     sg = use_case.subgraph(name="cluster_"+smush(item),
-                                           label=' '.join(item))
+                                           label=with_spaces(item))
 
                 #print(item)
                 #print(list(this_dict.keys())[0])
@@ -60,23 +73,23 @@ def recurse_generate_svg(list_of_subgraphs: list,
                     #print('   ',subitem)
                     if (item_is_key_in_list_of_dicts(subitem_list[index], list_of_dicts)):
                         sg.add_node(smush(item)+smush(subitem_list[index]),
-                                                               label=' '.join(subitem_list[index]),
+                                                               label=with_spaces(subitem_list[index]),
                                                                href=fnamel1+smush(item)+".svg",
                                                                color="blue",
                                                                shape="rectangle")
                     else: # no children to link to
                         sg.add_node(smush(item)+smush(subitem_list[index]),
-                                                               label=' '.join(subitem_list[index]),
+                                                               label=with_spaces(subitem_list[index]),
                                                                shape="rectangle")
                     if (item_is_key_in_list_of_dicts(subitem, list_of_dicts)):
                         sg.add_node(smush(item)+smush(subitem),
-                                                               label=' '.join(subitem),
+                                                               label=with_spaces(subitem),
                                                                href=fnamel1+smush(item)+".svg",
                                                                color="blue",
                                                                shape="rectangle")
                     else:
                         sg.add_node(smush(item)+smush(subitem),
-                                                               label=' '.join(subitem),
+                                                               label=with_spaces(subitem),
                                                                shape="rectangle")
 
                     sg.add_edge(smush(item)+smush(subitem_list[index]),
@@ -150,11 +163,13 @@ def add_subgraphs(list_of_dicts, use_case, item_tup):
             #print("has children:")
             #print(item_dict[item_tup])
             sg = use_case.subgraph(name="cluster_"+smush(item_tup),
-                                   label=' '.join(item_tup))
+                                   label=with_spaces(item_tup))
             # TODO: invisible nodes take up space, making the aesthetics ugly
             sg.add_node(smush(item_tup), style="invis") # where to connect edges
 
             for index, child_node in enumerate(item_dict[item_tup][1:]):
+                use_case.add_node(smush(item_dict[item_tup][index]), label=with_spaces(item_dict[item_tup][index]))
+                use_case.add_node(smush(child_node), label=with_spaces(child_node))
                # TODO: A bunch of warnings about missing clusters are currently displayed. Use something like
                # for this_sg in use_case.subgraphs():
                #     this_sg.to_string()
