@@ -30,7 +30,7 @@ list_of_dicts = [
   ("user","closes","web browser"),
 ]},
 # TODO: the following intersects with "user types REISUB"
-# {(("user","types", "URL of website")):[
+# {("user","types", "URL of website"):[
 #   ("keyboard key","press","mechanical switch"),
 #   ("mechanical switch","shorts","electrical circuit")
 # ]},
@@ -40,14 +40,17 @@ list_of_dicts = [
   ("web browser","initiates a TCP connection with the server"),
   ("web browser","sends an HTTP request to the server"),
   ("server","handles the request"),
-  ("server","sends back an HTTP response"),
-  ("web browser","renders the HTML content"),
+  ("server","sends back an","HTTP response"),
+  ("web browser","renders the","HTML content"),
   ("web browser","sends additional requests for objects embedded in the html file - CSS files, images, javascript"),
   ("server","sends back additional content"),
   ("web browser","Process CSS markup and build the CSSOM tree"),
   ("web browser","Combine the DOM and CSSOM into a render tree"),
   ("web browser","Run the layout on the render tree to compute the geometry of each node - layout/reflow"),
   ("web browser","Paint the individual nodes to the screen")
+]},
+{("web browser","renders the","HTML content"):[
+  ("web browser","creates","DOM tree")
 ]},
 {("web browser","browser checks the cache for a DNS record to find the corresponding IP address of URL"):[
   ("web browser","checks the","browser's in-memory cache"),
@@ -56,12 +59,30 @@ list_of_dicts = [
 {("web browser","checks the","operating system cache"):[
   ("web browser", "make a system call to", "operating system"),
   ("operating system","checks the","local cache in OS"),
-  ("operating system","check the","router cache")
+  ("operating system","checks the","router cache")
 ]},
-{("operating system","check the router cache"):[
+{("operating system","checks the","router cache"):[
   ("operating system","sends request to","router"),
   ("router","checks","local cache on router"),
   ("router","checks the","ISP cache")
+]},
+{("operating system","sends request to","router"):[
+  ("operating system","implements TCP connection to","router")#{} osilayer="4 = transport">
+]},
+{("operating system","implements TCP connection to","router"):[
+  ("NIC","sends SYN packet to","router"),
+  ("router","sends SYN-ACK packet to","NIC"),
+  ("NIC","sends ACK packet to","router")
+]},
+{("NIC","sends SYN packet to","router"):[
+  ("NIC","creates","IP dataframe"),
+  ("NIC","sends IP dataframe to","router NIC")
+]},
+{("NIC","sends IP dataframe to","router NIC"):[
+  ("NIC firmware","sends signal to","ethernet")
+]},
+{("NIC firmware","sends signal to","ethernet"):[
+  ("NIC hardware","sends electrical signal to","wire")
 ]},
 {("user","opens","web browser"):[
   ("user","moves pointer on desktop to browser icon using","mouse"),
@@ -90,7 +111,8 @@ list_of_dicts = [
   ("user","types", "REISUB"),
   ("motherboard","uses power from","battery")
 ]},
-{(("user","types", "REISUB")):[
+# TODO: the following is an instance of a generic class "user types *"
+{("user","types", "REISUB"):[
   ("keyboard key","press","mechanical switch"),
   ("mechanical switch","shorts","electrical circuit")
 ]}
