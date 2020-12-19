@@ -153,7 +153,8 @@ def generate_single_svg(list_of_dicts: list,
     #use_case.write()
     use_case.draw(file_name+".svg", format="svg", prog="dot")
 
-def add_subgraphs(list_of_dicts, use_case, item_tup):
+# TODO: how to tell mypy that the type is "AGraph" for input and output?
+def add_subgraphs(list_of_dicts: list, use_case, item_tup: Tuple(str, str, str)):
     """
     recursively add subgraphs
     """
@@ -168,13 +169,16 @@ def add_subgraphs(list_of_dicts, use_case, item_tup):
             sg.add_node(smush(item_tup), style="invis") # where to connect edges
 
             for index, child_node in enumerate(item_dict[item_tup][1:]):
-                use_case.add_node(smush(item_dict[item_tup][index]), label=with_spaces(item_dict[item_tup][index]))
-                use_case.add_node(smush(child_node), label=with_spaces(child_node))
+                use_case.add_node(smush(item_dict[item_tup][index]),
+                                  label=with_spaces(item_dict[item_tup][index]))
+                use_case.add_node(smush(child_node),
+                                  label=with_spaces(child_node))
                # TODO: A bunch of warnings about missing clusters are currently displayed. Use something like
                # for this_sg in use_case.subgraphs():
                #     this_sg.to_string()
                # to determine whether cluster exists for ltail, lhead
-                use_case.add_edge(smush(item_dict[item_tup][index]), smush(child_node),
+                use_case.add_edge(smush(item_dict[item_tup][index]),
+                                  smush(child_node),
                                   ltail="cluster_"+smush(item_dict[item_tup][index]),
                                   lhead="cluster_"+smush(child_node))
 
