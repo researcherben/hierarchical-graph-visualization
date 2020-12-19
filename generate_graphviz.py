@@ -23,9 +23,10 @@ def item_is_key_in_list_of_dicts(item_to_test: Tuple[str, str, str], list_of_dic
             return True
     return False
 
-def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: list, level: int, parent: str):
+def recurse_generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: list, level: int, parent: str):
     """
-    GraphViz from list of dicts
+    recursively created hyperlinked SVGs using GraphViz
+    input data structure is a list of dicts
     """
     #print('list of subgraphs:', list_of_subgraphs)
     #print('output filename = ', output_filename)
@@ -35,16 +36,16 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
     use_case.clear()
     use_case.graph_attr.update(compound="true")
     for item in list_of_subgraphs:
-        item_without_spaces = smush(item)
+        #item_without_spaces = smush(item)
         for this_dict in list_of_dicts:
             if list(this_dict.keys())[0] == item:
                 #unique_subgraph_name = item_without_spaces#+"_"+str(random.randint(1000,9999))
                 if (item_is_key_in_list_of_dicts(item, list_of_dicts)):
-                    sg = use_case.subgraph(name="cluster_"+item_without_spaces,
+                    sg = use_case.subgraph(name="cluster_"+smush(item),
                                            label=' '.join(item),
-                                           href=fnamel1+item_without_spaces+".svg")
+                                           href=fnamel1+smush(item)+".svg")
                 else:
-                    sg = use_case.subgraph(name="cluster_"+item_without_spaces,
+                    sg = use_case.subgraph(name="cluster_"+smush(item),
                                            label=' '.join(item))
 
                 #print(item)
@@ -53,28 +54,28 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
                 for index,subitem in enumerate(subitem_list[1:]):
                     #print('   ',subitem)
                     if (item_is_key_in_list_of_dicts(subitem_list[index], list_of_dicts)):
-                        sg.add_node(item_without_spaces+smush(subitem_list[index]),
+                        sg.add_node(smush(item)+smush(subitem_list[index]),
                                                                label=' '.join(subitem_list[index]),
-                                                               href=fnamel1+item_without_spaces+".svg",
+                                                               href=fnamel1+smush(item)+".svg",
                                                                color="blue",
                                                                shape="rectangle")
                     else: # no children to link to
-                        sg.add_node(item_without_spaces+smush(subitem_list[index]),
+                        sg.add_node(smush(item)+smush(subitem_list[index]),
                                                                label=' '.join(subitem_list[index]),
                                                                shape="rectangle")
                     if (item_is_key_in_list_of_dicts(subitem, list_of_dicts)):
-                        sg.add_node(item_without_spaces+smush(subitem),
+                        sg.add_node(smush(item)+smush(subitem),
                                                                label=' '.join(subitem),
-                                                               href=fnamel1+item_without_spaces+".svg",
+                                                               href=fnamel1+smush(item)+".svg",
                                                                color="blue",
                                                                shape="rectangle")
                     else:
-                        sg.add_node(item_without_spaces+smush(subitem),
+                        sg.add_node(smush(item)+smush(subitem),
                                                                label=' '.join(subitem),
                                                                shape="rectangle")
 
-                    sg.add_edge(item_without_spaces+smush(subitem_list[index]),
-                                item_without_spaces+smush(subitem))
+                    sg.add_edge(smush(item)+smush(subitem_list[index]),
+                                smush(item)+smush(subitem))
 
     for cpt_dict in cross_phase_transitions:
         #print('cpt_dict["from subgraph"]',cpt_dict["from subgraph"])
@@ -99,7 +100,7 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
                                   ltail="cluster_"+smush(cpt_dict["from subgraph"]))
 
     if level>0:
-        use_case.add_node("zoom out", href=parent+".svg", color="red", shape="invtriangle")
+        use_case.add_node("zoom out", href=parent+".svg", color="red", shape="triangle")
     #use_case.write()
     use_case.draw(fnamel+output_filename+".svg", format="svg", prog="dot")
     #print("drew SVG for ", output_filename)
@@ -107,11 +108,10 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
     for item in list_of_subgraphs:
         for index, this_dict in enumerate(list_of_dicts):
             if item in this_dict.keys():
-                item_without_spaces = smush(item)
-                generate_svg(list_of_dicts[index][item], item_without_spaces, list_of_dicts, level+1,
+                recurse_generate_svg(list_of_dicts[index][item], smush(item), list_of_dicts, level+1,
                 fnamel+output_filename)
 
 
 # import generate_graphviz as gg
 if __name__ == "__main__":
-    generate_svg(list_of_dicts[0]["user story"], "how_to_use_the_internet", list_of_dicts, level=0, parent=None)
+    recurse_generate_svg(list_of_dicts[0]["user story"], "how_to_use_the_internet", list_of_dicts, level=0, parent=None)
