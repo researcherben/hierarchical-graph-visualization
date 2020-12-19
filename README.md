@@ -7,8 +7,8 @@ Implemented in [Graphviz](https://graphviz.org/) using [pygraphviz](https://pygr
 ### using Docker
 1. build the [Docker](https://www.docker.com/) image using `make docker_live`.
 1. in the Docker container prompt, run `make svg`
-### bare-metal Python
-The point of using docker is to capture the dependencies. You could also run the [Python3](https://www.python.org/downloads/) script `generate_graphviz.py` bare-metal if you have `pygraphviz` available.
+### alternative to Docker: bare-metal Python
+The point of using docker is to capture the dependencies; Docker is not required. You could also run the [Python3](https://www.python.org/downloads/) script `generate_graphviz.py` bare-metal if you have `pygraphviz` available.
 ### navigate the output
 1. In [Firefox](https://www.mozilla.org/en-US/firefox/new/), open the "0_*.svg" file
 1. click on blue boxes -- these link to other SVGs

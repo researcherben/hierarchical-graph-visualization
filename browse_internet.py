@@ -6,8 +6,8 @@ list_of_dicts = [
 ]},
 {("user","turn on","computer"):[
   ("while computer is off","user","pushes","power button"),
-  ("power button","short circuits","wire"),
-  ("motherboard","does something to","CPU"),
+  ("while computer is off","power button","short circuits","wire"),
+  ("while computer is off","motherboard","does something to","CPU"),
   ("CPU","executes BIOS code at bottom of","memory map"),
   ("BIOS","boots","computer"),
   ("operating system","starts","desktop")
@@ -43,8 +43,8 @@ list_of_dicts = [
 ]},
 {("user","turn off","the computer"):[
   ("while computer is on","user","pushes","power button"),
-  ("power button","short circuits","wire"),
-  ("motherboard","does something to","CPU"),
+  ("while computer is on","power button","short circuits","wire"),
+  ("while computer is on","motherboard","does something to","CPU"),
   ("motherboard","uses power from","battery")
 ]},
 {("user","turn off","the computer"):[
