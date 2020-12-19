@@ -29,9 +29,8 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
     """
     #print('list of subgraphs:', list_of_subgraphs)
     #print('output filename = ', output_filename)
-    fnamepre = "AUTO_"
-    fnamepost = "_"+str(level)
-    fnamepostp1 = "_"+str(level+1)
+    fnamel = "AUTO_"+str(level)+"_"
+    fnamel1 = "AUTO_"+str(level+1)+"_"
     use_case = AGraph(directed=True, comment=output_filename)#, compound=True)
     use_case.clear()
     use_case.graph_attr.update(compound="true")
@@ -43,7 +42,7 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
                 if (item_is_key_in_list_of_dicts(item, list_of_dicts)):
                     sg = use_case.subgraph(name="cluster_"+item_without_spaces,
                                            label=' '.join(item),
-                                           href=fnamepre+item_without_spaces+fnamepostp1+".svg")
+                                           href=fnamel1+item_without_spaces+".svg")
                 else:
                     sg = use_case.subgraph(name="cluster_"+item_without_spaces,
                                            label=' '.join(item))
@@ -56,7 +55,7 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
                     if (item_is_key_in_list_of_dicts(subitem_list[index], list_of_dicts)):
                         sg.add_node(item_without_spaces+smush(subitem_list[index]),
                                                                label=' '.join(subitem_list[index]),
-                                                               href=fnamepre+item_without_spaces+fnamepostp1+".svg",
+                                                               href=fnamel1+item_without_spaces+".svg",
                                                                color="blue",
                                                                shape="rectangle")
                     else: # no children to link to
@@ -66,7 +65,7 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
                     if (item_is_key_in_list_of_dicts(subitem, list_of_dicts)):
                         sg.add_node(item_without_spaces+smush(subitem),
                                                                label=' '.join(subitem),
-                                                               href=fnamepre+item_without_spaces+fnamepostp1+".svg",
+                                                               href=fnamel1+item_without_spaces+".svg",
                                                                color="blue",
                                                                shape="rectangle")
                     else:
@@ -102,7 +101,7 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
     if level>0:
         use_case.add_node("zoom out", href=parent+".svg", color="red", shape="invtriangle")
     #use_case.write()
-    use_case.draw(fnamepre+output_filename+fnamepost+".svg", format="svg", prog="dot")
+    use_case.draw(fnamel+output_filename+".svg", format="svg", prog="dot")
     #print("drew SVG for ", output_filename)
 
     for item in list_of_subgraphs:
@@ -110,7 +109,7 @@ def generate_svg(list_of_subgraphs: list, output_filename: str, list_of_dicts: l
             if item in this_dict.keys():
                 item_without_spaces = smush(item)
                 generate_svg(list_of_dicts[index][item], item_without_spaces, list_of_dicts, level+1,
-                fnamepre+output_filename+fnamepost)
+                fnamel+output_filename)
 
 
 # import generate_graphviz as gg
