@@ -1,3 +1,10 @@
+
+def user_types_on_keyboard():
+    return [
+    ("keyboard key","presses","mechanical switch"),
+    ("mechanical switch","shorts","electrical circuit")
+    ]
+
 list_of_dicts = [
 {"user story": [
   ("user","turn on","computer"),
@@ -30,10 +37,7 @@ list_of_dicts = [
   ("user","closes","web browser"),
 ]},
 # TODO: the following intersects with "user types REISUB"
-# {("user","types", "URL of website"):[
-#   ("keyboard key","press","mechanical switch"),
-#   ("mechanical switch","shorts","electrical circuit")
-# ]},
+{("user","types", "URL of website"):user_types_on_keyboard()},
 {("web browser","shows","webpage"):[
   ("web browser","separate path from domain name from protocol"),
   ("web browser","browser checks the cache for a DNS record to find the corresponding IP address of URL"),
@@ -46,7 +50,7 @@ list_of_dicts = [
   ("server","sends back additional content"),
   ("web browser","Process CSS markup and build the CSSOM tree"),
   ("web browser","Combine the DOM and CSSOM into a render tree"),
-  ("web browser","Run the layout on the render tree to compute the geometry of each node - layout/reflow"),
+  ("web browser","Run the layout on the render tree to compute the geometry of each node aka layout  aka reflow"),
   ("web browser","Paint the individual nodes to the screen")
 ]},
 {("web browser","renders the","HTML content"):[
@@ -112,10 +116,7 @@ list_of_dicts = [
   ("motherboard","uses power from","battery")
 ]},
 # TODO: the following is an instance of a generic class "user types *"
-{("user","types", "REISUB"):[
-  ("keyboard key","press","mechanical switch"),
-  ("mechanical switch","shorts","electrical circuit")
-]}
+{("user","types", "REISUB"): user_types_on_keyboard()}
 ]
 
 
