@@ -5,7 +5,7 @@ list_of_dicts = [
   ("user","turn off","the computer")
 ]},
 {("user","turn on","computer"):[
-  ("user","pushes","power button"),
+  ("while computer is off","user","pushes","power button"),
   ("power button","short circuits","wire"),
   ("motherboard","does something to","CPU"),
   ("CPU","executes BIOS code at bottom of","memory map"),
@@ -42,7 +42,7 @@ list_of_dicts = [
   ("operating system","moves pointer on","computer screen")
 ]},
 {("user","turn off","the computer"):[
-  ("user","pushes","power button"),
+  ("while computer is on","user","pushes","power button"),
   ("power button","short circuits","wire"),
   ("motherboard","does something to","CPU"),
   ("motherboard","uses power from","battery")
@@ -72,6 +72,6 @@ cross_phase_transitions = [
  {"from subgraph": ("user","browses","the web"),
   "from node": ("user","closes","web browser"),
   "to subgraph": ("user","turn off","the computer"),
-  "to node": ("user","pushes","power button"),
+  "to node": ("while computer is on","user","pushes","power button"),
   "lhead":True, "ltail":True}
 ]
