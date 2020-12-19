@@ -14,7 +14,7 @@ def smush(tup: Tuple[str, str, str]) -> str:
     """
     since I'm using tuples and need to get strings, merge the tuple items with underscores
     """
-    return '_'.join(tup).replace(" ","_")
+    return '_'.join(tup).replace(" ","_").replace(':','').replace('-','').replace('.','').replace(',','').replace('(','').replace(')','').replace('__','_').replace("'","")
 
 def with_spaces(tup: Tuple[str, str, str]) -> str:
     tup_as_str = ' '.join(tup)
