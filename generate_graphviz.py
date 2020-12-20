@@ -196,8 +196,11 @@ def add_subgraphs(list_of_task_dicts: list, use_case, task_tup: Tuple[str, str, 
             for sg_tup in task_dist[task_tup]:
                 #print('sg_tup:', sg_tup)
                 add_subgraphs(list_of_task_dicts, sg, sg_tup, parent=parent+smush(task_tup))
+                # passing back the "use_case" as output from the function causes a segmentation fault!
+                #use_case = add_subgraphs(list_of_task_dicts, sg, sg_tup, parent=parent+smush(task_tup))
         else: # no children, so create a node instead of a subgraph
             use_case.add_node(smush(task_tup), label=with_spaces(task_tup))
+            # intentionally did not include shape="rectangle" in order to indicate there are no children
 
 
     return use_case
