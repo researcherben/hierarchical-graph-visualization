@@ -126,27 +126,6 @@ def recurse_generate_svg(list_of_subtasks: list,
                           smush(task_tup),
                           ltail="cluster_"+smush(list_of_subtasks[index]),
                           lhead="cluster_"+smush(task_tup))
-    # for cpt_dict in cross_phase_transitions:
-    #     #print('cpt_dict["from subgraph"]',cpt_dict["from subgraph"])
-    #     #print(list_of_subtasks)
-    #     #print('cpt_dict["to subgraph"]',cpt_dict["to subgraph"])
-    #     if cpt_dict["from subgraph"] in list_of_subtasks and cpt_dict["to subgraph"] in list_of_subtasks:
-    #         if (not cpt_dict["lhead"]) and (not cpt_dict["ltail"]):
-    #             use_case.add_edge(smush(cpt_dict["from subgraph"])+smush(cpt_dict["from node"]),
-    #                               smush(cpt_dict["to subgraph"])+smush(cpt_dict["to node"]))
-    #         if cpt_dict["lhead"] and (not cpt_dict["ltail"]):
-    #             use_case.add_edge(smush(cpt_dict["from subgraph"])+smush(cpt_dict["from node"]),
-    #                               smush(cpt_dict["to subgraph"])+smush(cpt_dict["to node"]),
-    #                               lhead="cluster_"+smush(cpt_dict["to subgraph"]))
-    #         elif (not cpt_dict["lhead"]) and cpt_dict["ltail"]:
-    #             use_case.add_edge(smush(cpt_dict["from subgraph"])+smush(cpt_dict["from node"]),
-    #                               smush(cpt_dict["to subgraph"])+smush(cpt_dict["to node"]),
-    #                               ltail="cluster_"+smush(cpt_dict["from subgraph"]))
-    #         else:
-    #             use_case.add_edge(smush(cpt_dict["from subgraph"])+smush(cpt_dict["from node"]),
-    #                               smush(cpt_dict["to subgraph"])+smush(cpt_dict["to node"]),
-    #                               lhead="cluster_"+smush(cpt_dict["to subgraph"]),
-    #                               ltail="cluster_"+smush(cpt_dict["from subgraph"]))
 
     if recursive_depth>0:
         use_case.add_node("zoom out", href=parent+".svg", color="red", shape="triangle")
@@ -179,12 +158,6 @@ def generate_single_svg(list_of_task_dicts: list,
                           smush(task_tup),
                           ltail="cluster_"+smush(list_of_toplevel_steps[index]),
                           lhead="cluster_"+smush(task_tup))
-    #use_case.write()
-    # for cpt_dict in cross_phase_transitions:
-    #     use_case.add_edge(smush(cpt_dict["from node"]),
-    #                       smush(cpt_dict["to node"]),
-    #                       lhead="cluster_"+smush(cpt_dict["to subgraph"]),
-    #                       ltail="cluster_"+smush(cpt_dict["from subgraph"]))
 
     #use_case.write()
     use_case.draw(file_name+".svg", format="svg", prog="dot")
