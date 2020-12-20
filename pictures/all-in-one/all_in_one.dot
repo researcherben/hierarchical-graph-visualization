@@ -1,0 +1,306 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_state_computer_is_turning_on {
+		graph [label="state: computer is turning on"];
+		subgraph cluster_BIOS_boots_computer {
+			graph [label="BIOS boots computer"];
+			subgraph cluster_BIOS_loads_boot_sequence {
+				graph [label="BIOS loads boot sequence"];
+				BIOS_loads_boot_sequence	[label="BIOS loads boot sequence",
+					style=invis];
+				BIOS_boots_devices_directly_into_your_OSspecific_bootloader	[label="BIOS boots devices directly into your OS-specific bootloader"];
+				BIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR	[label="BIOS boots devices (any hard disk, or anything 
+emulating a hard disk) into an MBR"];
+			}
+			BIOS_boots_computer	[label="BIOS boots computer",
+				style=invis];
+			BIOS_detects_RAM	[label="BIOS detects RAM"];
+			BIOS_detects_hardware	[label="BIOS detects hardware"];
+			BIOS_boots_devices_directly_into_your_OSspecific_bootloader -> BIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR	[lhead=cluster_BIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR,
+				ltail=cluster_BIOS_boots_devices_directly_into_your_OSspecific_bootloader];
+		}
+		state_computer_is_turning_on	[label="state: computer is turning on",
+			style=invis];
+		while_computer_is_off_power_button_short_circuits_wire	[label="while computer is off power button short circuits wire"];
+		while_computer_is_off_motherboard_does_something_to_CPU	[label="while computer is off motherboard does something to CPU"];
+		CPU_executes_BIOS_code_at_bottom_of_memory_map	[label="CPU executes BIOS code at bottom of memory map"];
+		operating_system_starts_desktop	[label="operating system starts desktop"];
+		BIOS_detects_RAM -> BIOS_detects_hardware	[lhead=cluster_BIOS_detects_hardware,
+			ltail=cluster_BIOS_detects_RAM];
+		BIOS_detects_hardware -> BIOS_loads_boot_sequence	[lhead=cluster_BIOS_loads_boot_sequence,
+			ltail=cluster_BIOS_detects_hardware];
+	}
+	subgraph cluster_action_user_turns_on_computer {
+		graph [label="action: user turns on computer"];
+		action_user_turns_on_computer	[label="action: user turns on computer",
+			style=invis];
+		while_computer_is_off_user_pushes_power_button	[label="while computer is off user pushes power button"];
+	}
+	subgraph cluster_state_computer_is_off {
+		graph [label="state: computer is off"];
+		state_computer_is_off	[label="state: computer is off",
+			style=invis];
+		motherboard_uses_power_from_battery	[label="motherboard uses power from battery"];
+	}
+	subgraph cluster_action_user_browses_the_web {
+		graph [label="action: user browses the web"];
+		subgraph cluster_user_closes_web_browser {
+			graph [label="user closes web browser"];
+			subgraph cluster_user_types_altf4 {
+				graph [label="user types alt-f4"];
+				keyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+				mechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+				user_types_altf4	[label="user types alt-f4",
+					style=invis];
+			}
+			user_closes_web_browser	[label="user closes web browser",
+				style=invis];
+			keyboard_key_presses_mechanical_switch -> mechanical_switch_shorts_electrical_circuit	[lhead=cluster_mechanical_switch_shorts_electrical_circuit,
+				ltail=cluster_keyboard_key_presses_mechanical_switch];
+			user_moves_pointer_on_desktop_to_browser_close_icon_using_mouse	[label="user moves pointer on desktop to 
+browser close icon using mouse"];
+			user_clicks_on_browser_close_icon	[label="user clicks on browser close icon"];
+			operating_sytem_closes_web_browser	[label="operating sytem closes web browser"];
+		}
+		subgraph cluster_web_browser_shows_webpage {
+			graph [label="web browser shows webpage"];
+			subgraph cluster_web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL {
+				graph [label="web browser browser checks the cache for a DNS record 
+to find the corresponding IP address of URL"];
+				subgraph cluster_web_browser_checks_the_operating_system_cache {
+					graph [label="web browser checks the operating system cache"];
+					subgraph cluster_operating_system_checks_the_router_cache {
+						graph [label="operating system checks the router cache"];
+						subgraph cluster_operating_system_sends_request_to_router {
+							graph [label="operating system sends request to router"];
+							subgraph cluster_operating_system_implements_TCP_connection_to_router {
+								graph [label="operating system implements TCP connection to router"];
+								subgraph cluster_NIC_sends_SYN_packet_to_router {
+									graph [label="NIC sends SYN packet to router"];
+									subgraph cluster_NIC_sends_IP_dataframe_to_router_NIC {
+										graph [label="NIC sends IP dataframe to router NIC"];
+										subgraph cluster_NIC_firmware_sends_signal_to_ethernet {
+											graph [label="NIC firmware sends signal to ethernet"];
+											NIC_firmware_sends_signal_to_ethernet	[label="NIC firmware sends signal to ethernet",
+												style=invis];
+											NIC_hardware_sends_electrical_signal_to_wire	[label="NIC hardware sends electrical signal to wire"];
+										}
+										NIC_sends_IP_dataframe_to_router_NIC	[label="NIC sends IP dataframe to router NIC",
+											style=invis];
+									}
+									NIC_sends_SYN_packet_to_router	[label="NIC sends SYN packet to router",
+										style=invis];
+									NIC_creates_IP_dataframe	[label="NIC creates IP dataframe"];
+								}
+								operating_system_implements_TCP_connection_to_router	[label="operating system implements TCP connection to router",
+									style=invis];
+								router_sends_SYNACK_packet_to_NIC	[label="router sends SYN-ACK packet to NIC"];
+								NIC_sends_ACK_packet_to_router	[label="NIC sends ACK packet to router"];
+								NIC_creates_IP_dataframe -> NIC_sends_IP_dataframe_to_router_NIC	[lhead=cluster_NIC_sends_IP_dataframe_to_router_NIC,
+									ltail=cluster_NIC_creates_IP_dataframe];
+							}
+							operating_system_sends_request_to_router	[label="operating system sends request to router",
+								style=invis];
+							NIC_sends_SYN_packet_to_router -> router_sends_SYNACK_packet_to_NIC	[lhead=cluster_router_sends_SYNACK_packet_to_NIC,
+								ltail=cluster_NIC_sends_SYN_packet_to_router];
+							router_sends_SYNACK_packet_to_NIC -> NIC_sends_ACK_packet_to_router	[lhead=cluster_NIC_sends_ACK_packet_to_router,
+								ltail=cluster_router_sends_SYNACK_packet_to_NIC];
+						}
+						operating_system_checks_the_router_cache	[label="operating system checks the router cache",
+							style=invis];
+						router_checks_local_cache_on_router	[label="router checks local cache on router"];
+						router_checks_the_ISP_cache	[label="router checks the ISP cache"];
+					}
+					web_browser_checks_the_operating_system_cache	[label="web browser checks the operating system cache",
+						style=invis];
+					web_browser_make_a_system_call_to_operating_system	[label="web browser make a system call to operating system"];
+					operating_system_checks_the_local_cache_in_OS	[label="operating system checks the local cache in OS"];
+					operating_system_sends_request_to_router -> router_checks_local_cache_on_router	[lhead=cluster_router_checks_local_cache_on_router,
+						ltail=cluster_operating_system_sends_request_to_router];
+					router_checks_local_cache_on_router -> router_checks_the_ISP_cache	[lhead=cluster_router_checks_the_ISP_cache,
+						ltail=cluster_router_checks_local_cache_on_router];
+				}
+				web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL	[label="web browser browser checks the cache for a DNS record 
+to find the corresponding IP address of URL",
+					style=invis];
+				web_browser_checks_the_browsers_inmemory_cache	[label="web browser checks the browser's in-memory cache"];
+				web_browser_make_a_system_call_to_operating_system -> operating_system_checks_the_local_cache_in_OS	[lhead=cluster_operating_system_checks_the_local_cache_in_OS,
+					ltail=cluster_web_browser_make_a_system_call_to_operating_system];
+				operating_system_checks_the_local_cache_in_OS -> operating_system_checks_the_router_cache	[lhead=cluster_operating_system_checks_the_router_cache,
+					ltail=cluster_operating_system_checks_the_local_cache_in_OS];
+			}
+			subgraph cluster_web_browser_renders_the_HTML_content {
+				graph [label="web browser renders the HTML content"];
+				web_browser_renders_the_HTML_content	[label="web browser renders the HTML content",
+					style=invis];
+				web_browser_creates_DOM_tree	[label="web browser creates DOM tree"];
+			}
+			web_browser_shows_webpage	[label="web browser shows webpage",
+				style=invis];
+			web_browser_separate_path_from_domain_name_from_protocol	[label="web browser separate path from domain name from protocol"];
+			web_browser_initiates_TCP_connection_with_the_remote_server	[label="web browser initiates TCP connection with the remote server"];
+			web_browser_sends_an_HTTP_request_to_the_remote_server	[label="web browser sends an HTTP request to the remote server"];
+			server_handles_the_request	[label="server handles the request"];
+			server_sends_back_an_HTTP_response	[label="server sends back an HTTP response"];
+			web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript	[label="web browser sends additional requests for objects embedded in 
+the html file - CSS files, images, javascript"];
+			server_sends_back_additional_content	[label="server sends back additional content"];
+			web_browser_process_CSS_markup_and_build_the_CSSOM_tree	[label="web browser process CSS markup and build the CSSOM tree"];
+			web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree	[label="web browser combine the DOM and CSSOM into a render tree"];
+			web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow	[label="web browser run the layout on the render tree to compute 
+the geometry of each node aka layout  aka reflow"];
+			web_browser_paint_the_individual_nodes_to_the_screen	[label="web browser paint the individual nodes to the screen"];
+			web_browser_checks_the_browsers_inmemory_cache -> web_browser_checks_the_operating_system_cache	[lhead=cluster_web_browser_checks_the_operating_system_cache,
+				ltail=cluster_web_browser_checks_the_browsers_inmemory_cache];
+		}
+		subgraph cluster_user_opens_web_browser {
+			graph [label="user opens web browser"];
+			subgraph cluster_user_moves_pointer_on_desktop_to_browser_icon_using_mouse {
+				graph [label="user moves pointer on desktop to browser icon using mouse"];
+				user_moves_pointer_on_desktop_to_browser_icon_using_mouse	[label="user moves pointer on desktop to browser icon using mouse",
+					style=invis];
+				mouse_hardware_moves_across_surface	[label="mouse hardware moves across surface"];
+				mouse_hardware_light_sensor_detects_movement_using_light	[label="mouse hardware light sensor detects movement using light"];
+				mouse_hardware_sends_signal_across_USB_cable	[label="mouse hardware sends signal across USB cable"];
+				operating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+				operating_system_moves_pointer_on_computer_screen	[label="operating system moves pointer on computer screen"];
+			}
+			subgraph cluster_user_clicks_on_desktop_browser_icon {
+				graph [label="user clicks on desktop browser icon"];
+				user_clicks_on_desktop_browser_icon	[label="user clicks on desktop browser icon",
+					style=invis];
+				mouse_hardware_sends_signal_across_USB_cable;
+				operating_system_translates_signal_from_USB_cable;
+				mouse_hardware_depress_mechanical_switch	[label="mouse hardware depress mechanical switch"];
+				operating_system_acts_on_desktop_icon	[label="operating system acts on desktop icon"];
+			}
+			user_opens_web_browser	[label="user opens web browser",
+				style=invis];
+			operating_sytem_launches_web_browser	[label="operating sytem launches web browser"];
+			mouse_hardware_moves_across_surface -> mouse_hardware_light_sensor_detects_movement_using_light	[lhead=cluster_mouse_hardware_light_sensor_detects_movement_using_light,
+				ltail=cluster_mouse_hardware_moves_across_surface];
+			mouse_hardware_light_sensor_detects_movement_using_light -> mouse_hardware_sends_signal_across_USB_cable	[lhead=cluster_mouse_hardware_sends_signal_across_USB_cable,
+				ltail=cluster_mouse_hardware_light_sensor_detects_movement_using_light];
+			mouse_hardware_sends_signal_across_USB_cable -> operating_system_translates_signal_from_USB_cable	[lhead=cluster_operating_system_translates_signal_from_USB_cable,
+				ltail=cluster_mouse_hardware_sends_signal_across_USB_cable];
+			operating_system_translates_signal_from_USB_cable -> operating_system_moves_pointer_on_computer_screen	[lhead=cluster_operating_system_moves_pointer_on_computer_screen,
+				ltail=cluster_operating_system_translates_signal_from_USB_cable];
+			operating_system_translates_signal_from_USB_cable -> operating_system_acts_on_desktop_icon	[lhead=cluster_operating_system_acts_on_desktop_icon,
+				ltail=cluster_operating_system_translates_signal_from_USB_cable];
+			mouse_hardware_depress_mechanical_switch -> mouse_hardware_sends_signal_across_USB_cable	[lhead=cluster_mouse_hardware_sends_signal_across_USB_cable,
+				ltail=cluster_mouse_hardware_depress_mechanical_switch];
+		}
+		subgraph cluster_user_types_URL_of_website {
+			graph [label="user types URL of website"];
+			user_types_URL_of_website	[label="user types URL of website",
+				style=invis];
+			keyboard_key_presses_mechanical_switch;
+			mechanical_switch_shorts_electrical_circuit;
+		}
+		subgraph cluster_user_clicks_on_link {
+			graph [label="user clicks on link"];
+			user_clicks_on_link	[label="user clicks on link",
+				style=invis];
+			mouse_hardware_sends_signal_across_USB_cable;
+			operating_system_translates_signal_from_USB_cable;
+			mouse_hardware_depress_mechanical_switch;
+			operating_system_acts_on_desktop_icon;
+		}
+		action_user_browses_the_web	[label="action: user browses the web",
+			style=invis];
+		user_reads_webpage	[label="user reads webpage"];
+		user_moves_pointer_on_desktop_to_browser_icon_using_mouse -> user_clicks_on_desktop_browser_icon	[lhead=cluster_user_clicks_on_desktop_browser_icon,
+			ltail=cluster_user_moves_pointer_on_desktop_to_browser_icon_using_mouse];
+		user_clicks_on_desktop_browser_icon -> operating_sytem_launches_web_browser	[lhead=cluster_operating_sytem_launches_web_browser,
+			ltail=cluster_user_clicks_on_desktop_browser_icon];
+		web_browser_separate_path_from_domain_name_from_protocol -> web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL	[lhead=cluster_web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL,
+			ltail=cluster_web_browser_separate_path_from_domain_name_from_protocol];
+		web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL -> web_browser_initiates_TCP_connection_with_the_remote_server	[lhead=cluster_web_browser_initiates_TCP_connection_with_the_remote_server,
+			ltail=cluster_web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL];
+		web_browser_initiates_TCP_connection_with_the_remote_server -> web_browser_sends_an_HTTP_request_to_the_remote_server	[lhead=cluster_web_browser_sends_an_HTTP_request_to_the_remote_server,
+			ltail=cluster_web_browser_initiates_TCP_connection_with_the_remote_server];
+		web_browser_sends_an_HTTP_request_to_the_remote_server -> server_handles_the_request	[lhead=cluster_server_handles_the_request,
+			ltail=cluster_web_browser_sends_an_HTTP_request_to_the_remote_server];
+		server_handles_the_request -> server_sends_back_an_HTTP_response	[lhead=cluster_server_sends_back_an_HTTP_response,
+			ltail=cluster_server_handles_the_request];
+		server_sends_back_an_HTTP_response -> web_browser_renders_the_HTML_content	[lhead=cluster_web_browser_renders_the_HTML_content,
+			ltail=cluster_server_sends_back_an_HTTP_response];
+		web_browser_renders_the_HTML_content -> web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript	[lhead=cluster_web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript,
+			ltail=cluster_web_browser_renders_the_HTML_content];
+		web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript -> server_sends_back_additional_content	[lhead=cluster_server_sends_back_additional_content,
+			ltail=cluster_web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript];
+		server_sends_back_additional_content -> web_browser_process_CSS_markup_and_build_the_CSSOM_tree	[lhead=cluster_web_browser_process_CSS_markup_and_build_the_CSSOM_tree,
+			ltail=cluster_server_sends_back_additional_content];
+		web_browser_process_CSS_markup_and_build_the_CSSOM_tree -> web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree	[lhead=cluster_web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree,
+			ltail=cluster_web_browser_process_CSS_markup_and_build_the_CSSOM_tree];
+		web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree -> web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow	[lhead=cluster_web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow,
+			ltail=cluster_web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree];
+		web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow -> web_browser_paint_the_individual_nodes_to_the_screen	[lhead=cluster_web_browser_paint_the_individual_nodes_to_the_screen,
+			ltail=cluster_web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow];
+		user_moves_pointer_on_desktop_to_browser_close_icon_using_mouse -> user_clicks_on_browser_close_icon	[lhead=cluster_user_clicks_on_browser_close_icon,
+			ltail=cluster_user_moves_pointer_on_desktop_to_browser_close_icon_using_mouse];
+		user_clicks_on_browser_close_icon -> operating_sytem_closes_web_browser	[lhead=cluster_operating_sytem_closes_web_browser,
+			ltail=cluster_user_clicks_on_browser_close_icon];
+	}
+	subgraph cluster_state_computer_is_idle {
+		graph [label="state: computer is idle"];
+		state_computer_is_idle	[label="state: computer is idle",
+			style=invis];
+		operating_system_waiting_for_interrupt	[label="operating system waiting for interrupt"];
+	}
+	subgraph cluster_action_user_turns_off_the_computer {
+		graph [label="action: user turns off the computer"];
+		subgraph cluster_user_types_REISUB {
+			graph [label="user types REISUB"];
+			keyboard_key_presses_mechanical_switch;
+			mechanical_switch_shorts_electrical_circuit;
+			user_types_REISUB	[label="user types REISUB",
+				style=invis];
+		}
+		keyboard_key_presses_mechanical_switch -> mechanical_switch_shorts_electrical_circuit;
+		action_user_turns_off_the_computer	[label="action: user turns off the computer",
+			style=invis];
+		while_computer_is_on_user_pushes_power_button	[label="while computer is on user pushes power button"];
+		while_computer_is_on_power_button_short_circuits_wire	[label="while computer is on power button short circuits wire"];
+		while_computer_is_on_motherboard_does_something_to_CPU	[label="while computer is on motherboard does something to CPU"];
+		user_selects_shutdown_menu_option_on_desktop	[label="user selects shutdown menu option on desktop"];
+		operating_system_terminates_desktop	[label="operating system terminates desktop"];
+	}
+	state_computer_is_off -> action_user_turns_on_computer	[lhead=cluster_action_user_turns_on_computer,
+		ltail=cluster_state_computer_is_off];
+	action_user_turns_on_computer -> state_computer_is_turning_on	[lhead=cluster_state_computer_is_turning_on,
+		ltail=cluster_action_user_turns_on_computer];
+	state_computer_is_turning_on -> action_user_browses_the_web	[lhead=cluster_action_user_browses_the_web,
+		ltail=cluster_state_computer_is_turning_on];
+	while_computer_is_off_power_button_short_circuits_wire -> while_computer_is_off_motherboard_does_something_to_CPU	[lhead=cluster_while_computer_is_off_motherboard_does_something_to_CPU,
+		ltail=cluster_while_computer_is_off_power_button_short_circuits_wire];
+	while_computer_is_off_motherboard_does_something_to_CPU -> CPU_executes_BIOS_code_at_bottom_of_memory_map	[lhead=cluster_CPU_executes_BIOS_code_at_bottom_of_memory_map,
+		ltail=cluster_while_computer_is_off_motherboard_does_something_to_CPU];
+	CPU_executes_BIOS_code_at_bottom_of_memory_map -> BIOS_boots_computer	[lhead=cluster_BIOS_boots_computer,
+		ltail=cluster_CPU_executes_BIOS_code_at_bottom_of_memory_map];
+	BIOS_boots_computer -> operating_system_starts_desktop	[lhead=cluster_operating_system_starts_desktop,
+		ltail=cluster_BIOS_boots_computer];
+	action_user_browses_the_web -> state_computer_is_idle	[lhead=cluster_state_computer_is_idle,
+		ltail=cluster_action_user_browses_the_web];
+	user_opens_web_browser -> user_types_URL_of_website	[lhead=cluster_user_types_URL_of_website,
+		ltail=cluster_user_opens_web_browser];
+	user_types_URL_of_website -> web_browser_shows_webpage	[lhead=cluster_web_browser_shows_webpage,
+		ltail=cluster_user_types_URL_of_website];
+	web_browser_shows_webpage -> user_reads_webpage	[lhead=cluster_user_reads_webpage,
+		ltail=cluster_web_browser_shows_webpage];
+	user_reads_webpage -> user_clicks_on_link	[lhead=cluster_user_clicks_on_link,
+		ltail=cluster_user_reads_webpage];
+	user_clicks_on_link -> user_closes_web_browser	[lhead=cluster_user_closes_web_browser,
+		ltail=cluster_user_clicks_on_link];
+	state_computer_is_idle -> action_user_turns_off_the_computer	[lhead=cluster_action_user_turns_off_the_computer,
+		ltail=cluster_state_computer_is_idle];
+	action_user_turns_off_the_computer -> state_computer_is_off	[lhead=cluster_state_computer_is_off,
+		ltail=cluster_action_user_turns_off_the_computer];
+	while_computer_is_on_user_pushes_power_button -> while_computer_is_on_power_button_short_circuits_wire	[lhead=cluster_while_computer_is_on_power_button_short_circuits_wire,
+		ltail=cluster_while_computer_is_on_user_pushes_power_button];
+	while_computer_is_on_power_button_short_circuits_wire -> while_computer_is_on_motherboard_does_something_to_CPU	[lhead=cluster_while_computer_is_on_motherboard_does_something_to_CPU,
+		ltail=cluster_while_computer_is_on_power_button_short_circuits_wire];
+	user_selects_shutdown_menu_option_on_desktop -> operating_system_terminates_desktop	[lhead=cluster_operating_system_terminates_desktop,
+		ltail=cluster_user_selects_shutdown_menu_option_on_desktop];
+}
