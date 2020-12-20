@@ -23,14 +23,15 @@ def user_clicks_mouse():
       ("operating system","acts on","desktop icon")
     ]
 
-list_of_dicts = [
+list_of_task_dicts = [
 {"user story": [
   ("state:","computer","is off"),
   ("action:","user","turns on","computer"),
   ("state:","computer","is turning on"),
   ("action:","user","browses","the web"),
   ("state:","computer","is idle"),
-  ("action:","user","turns off","the computer")
+  ("action:","user","turns off","the computer"),
+  ("state:","computer","is off")
 ]},
 {("state:","computer","is idle"):[
   ("operating system","waiting for","interrupt")
@@ -151,27 +152,27 @@ list_of_dicts = [
 ]
 
 
-# https://github.com/pygraphviz/pygraphviz/issues/93
-cross_phase_transitions = [
- {"from subgraph":("action:","user","turns on","computer"),"from node":("while computer is off","user","pushes","power button"),
-  "to subgraph":("state:","computer","is turning on"),"to node":("while computer is off","power button","short circuits","wire"),
-  "lhead":True, "ltail":True},
- {"from subgraph":("state:","computer","is turning on"),"from node":("operating system","starts","desktop"),
-  "to subgraph":("state:","computer","is idle"),"to node":("operating system","waiting for","interrupt"),
-  "lhead":True, "ltail":True},
- {"from subgraph":("state:","computer","is idle"),"from node":("operating system","waiting for","interrupt"),
-  "to subgraph":("action:","user","browses","the web"),"to node":("user","opens","web browser"),
-  "lhead":True, "ltail":True},
- {"from subgraph":("action:","user","browses","the web"),"from node":("user","closes","web browser"),
-  "to subgraph":("state:","computer","is idle"),"to node":("operating system","waiting for","interrupt"),
-  "lhead":True, "ltail":True},
- {"from subgraph":("action:","user","browses","the web"),"from node":("user","closes","web browser"),
-  "to subgraph":("action:","user","turns off","the computer"),"to node":("while computer is on","user","pushes","power button"),
-  "lhead":True, "ltail":True},
- {"from subgraph":("action:","user","turns off","the computer"),"from node":("while computer is on","user","pushes","power button"),
-  "to subgraph":("state:","computer","is off"),"to node":("motherboard","uses power from","battery"),
-  "lhead":True, "ltail":True},
- {"from subgraph":("state:","computer","is off"),"from node":("motherboard","uses power from","battery"),
-  "to subgraph":("action:","user","turns on","computer"),"to node":("while computer is off","user","pushes","power button"),
-  "lhead":True, "ltail":True}
-]
+# # https://github.com/pygraphviz/pygraphviz/issues/93
+# cross_phase_transitions = [
+#  {"from subgraph":("action:","user","turns on","computer"),"from node":("while computer is off","user","pushes","power button"),
+#   "to subgraph":("state:","computer","is turning on"),"to node":("while computer is off","power button","short circuits","wire"),
+#   "lhead":True, "ltail":True},
+#  {"from subgraph":("state:","computer","is turning on"),"from node":("operating system","starts","desktop"),
+#   "to subgraph":("state:","computer","is idle"),"to node":("operating system","waiting for","interrupt"),
+#   "lhead":True, "ltail":True},
+#  {"from subgraph":("state:","computer","is idle"),"from node":("operating system","waiting for","interrupt"),
+#   "to subgraph":("action:","user","browses","the web"),"to node":("user","opens","web browser"),
+#   "lhead":True, "ltail":True},
+#  {"from subgraph":("action:","user","browses","the web"),"from node":("user","closes","web browser"),
+#   "to subgraph":("state:","computer","is idle"),"to node":("operating system","waiting for","interrupt"),
+#   "lhead":True, "ltail":True},
+#  {"from subgraph":("action:","user","browses","the web"),"from node":("user","closes","web browser"),
+#   "to subgraph":("action:","user","turns off","the computer"),"to node":("while computer is on","user","pushes","power button"),
+#   "lhead":True, "ltail":True},
+#  {"from subgraph":("action:","user","turns off","the computer"),"from node":("while computer is on","user","pushes","power button"),
+#   "to subgraph":("state:","computer","is off"),"to node":("motherboard","uses power from","battery"),
+#   "lhead":True, "ltail":True},
+#  {"from subgraph":("state:","computer","is off"),"from node":("motherboard","uses power from","battery"),
+#   "to subgraph":("action:","user","turns on","computer"),"to node":("while computer is off","user","pushes","power button"),
+#   "lhead":True, "ltail":True}
+# ]
