@@ -33,8 +33,8 @@ def task_is_key_in_list_of_task_dicts(task_tuple_to_test: Tuple[str, str, str], 
     """
     is a tuple present as a key in the list of dicts?
     """
-    for task_disk in list_of_task_dicts:
-        if task_tuple_to_test in task_disk.keys():
+    for task_dist in list_of_task_dicts:
+        if task_tuple_to_test in task_dist.keys():
             return True
     return False
 
@@ -151,7 +151,7 @@ def generate_single_svg(list_of_task_dicts: list,
     use_case.graph_attr.update(compound="true")
     for task_tup in list_of_toplevel_steps:
         #print(task_tup)
-        use_case = add_subgraphs(list_of_task_dicts, use_case, task_tup)
+        use_case = add_subgraphs(list_of_task_dicts, use_case, task_tup, parent="")
 
     for index,task_tup in enumerate(list_of_toplevel_steps[1:]):
         use_case.add_edge(smush(list_of_toplevel_steps[index]),
@@ -159,43 +159,43 @@ def generate_single_svg(list_of_task_dicts: list,
                           ltail="cluster_"+smush(list_of_toplevel_steps[index]),
                           lhead="cluster_"+smush(task_tup))
 
-    #use_case.write()
+    use_case.write(file_name+".dot")
     use_case.draw(file_name+".svg", format="svg", prog="dot")
 
 # TODO: how to tell mypy that the type is "AGraph" for input and output?
-def add_subgraphs(list_of_task_dicts: list, use_case, task_tup: Tuple[str, str, str]):
+def add_subgraphs(list_of_task_dicts: list, use_case, task_tup: Tuple[str, str, str], parent: str):
     """
     recursively add subgraphs
     """
-    for task_disk in list_of_task_dicts:
-        if task_tup in task_disk.keys():
+    for task_dist in list_of_task_dicts:
+        if task_tup in task_dist.keys():
             #print('creating subgraph for task', task_tup)
             #print("has children:")
-            #print(task_disk[task_tup])
+            #print(task_dist[task_tup])
             sg = use_case.subgraph(name="cluster_"+smush(task_tup),
                                    label=with_spaces(task_tup))
             # TODO: invisible nodes take up space, making the aesthetics ugly
             sg.add_node(smush(task_tup), style="invis") # where to connect edges
             #print('added invisible node to ',task_tup)
 
-            for index, child_node in enumerate(task_disk[task_tup][1:]):
-                use_case.add_node(smush(task_disk[task_tup][index]),
-                                  label=with_spaces(task_disk[task_tup][index]))
+            for index, child_node in enumerate(task_dist[task_tup][1:]):
+                use_case.add_node(smush(task_dist[task_tup][index]),
+                                  label=with_spaces(task_dist[task_tup][index]))
                 use_case.add_node(smush(child_node),
                                   label=with_spaces(child_node))
                # TODO: A bunch of warnings about missing clusters are currently displayed. Use something like
                # for this_sg in use_case.subgraphs():
                #     this_sg.to_string()
                # to determine whether cluster exists for ltail, lhead
-                use_case.add_edge(smush(task_disk[task_tup][index]),
+                use_case.add_edge(smush(task_dist[task_tup][index]),
                                   smush(child_node),
-                                  ltail="cluster_"+smush(task_disk[task_tup][index]),
+                                  ltail="cluster_"+smush(task_dist[task_tup][index]),
                                   lhead="cluster_"+smush(child_node))
 
-            #print('task_disk:', task_disk)
-            for sg_tup in task_disk[task_tup]:
+            #print('task_dist:', task_dist)
+            for sg_tup in task_dist[task_tup]:
                 #print('sg_tup:', sg_tup)
-                add_subgraphs(list_of_task_dicts, sg, sg_tup)
+                add_subgraphs(list_of_task_dicts, sg, sg_tup, parent=parent+smush(task_tup))
         else: # no children, so create a node instead of a subgraph
             use_case.add_node(smush(task_tup), label=with_spaces(task_tup))
 
