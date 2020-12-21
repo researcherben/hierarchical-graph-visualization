@@ -1,0 +1,15 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	NIC_sends_SYN_packet_to_router	[color=blue,
+		href="single_layer_8_NIC_sends_SYN_packet_to_router.svg",
+		label="NIC sends SYN packet to router",
+		shape=rectangle];
+	router_sends_SYNACK_packet_to_NIC	[label="router sends SYN-ACK packet to NIC"];
+	NIC_sends_SYN_packet_to_router -> router_sends_SYNACK_packet_to_NIC;
+	NIC_sends_ACK_packet_to_router	[label="NIC sends ACK packet to router"];
+	router_sends_SYNACK_packet_to_NIC -> NIC_sends_ACK_packet_to_router;
+	"zoom out"	[color=red,
+		href="single_layer_6_operating_system_sends_request_to_router.svg",
+		shape=triangle];
+}

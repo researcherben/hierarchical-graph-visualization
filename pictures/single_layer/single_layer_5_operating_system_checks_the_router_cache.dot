@@ -1,0 +1,15 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	operating_system_sends_request_to_router	[color=blue,
+		href="single_layer_6_operating_system_sends_request_to_router.svg",
+		label="operating system sends request to router",
+		shape=rectangle];
+	router_checks_local_cache_on_router	[label="router checks local cache on router"];
+	operating_system_sends_request_to_router -> router_checks_local_cache_on_router;
+	router_checks_the_ISP_cache	[label="router checks the ISP cache"];
+	router_checks_local_cache_on_router -> router_checks_the_ISP_cache;
+	"zoom out"	[color=red,
+		href="single_layer_4_web_browser_checks_the_operating_system_cache.svg",
+		shape=triangle];
+}

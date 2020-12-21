@@ -73,7 +73,7 @@ def single_layer(list_of_task_dicts: list,
                     single_layer(list_of_task_dicts,
                                  task_dist[task_tup],
                                  recursive_depth+1,
-                                 "single_layer_"+str(recursive_depth)+"_"+smush(task_tup),
+                                 "single_layer_"+str(recursive_depth)+"_"+file_name,
                                  file_name=smush(task_tup))
         else:
             #print("    no children, so create node")

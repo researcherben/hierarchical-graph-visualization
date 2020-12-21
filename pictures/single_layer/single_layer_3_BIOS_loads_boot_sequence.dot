@@ -1,0 +1,11 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	BIOS_boots_devices_directly_into_your_OSspecific_bootloader	[label="BIOS boots devices directly into your OS-specific bootloader"];
+	BIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR	[label="BIOS boots devices (any hard disk, or anything 
+emulating a hard disk) into an MBR"];
+	BIOS_boots_devices_directly_into_your_OSspecific_bootloader -> BIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR;
+	"zoom out"	[color=red,
+		href="single_layer_2_BIOS_boots_computer.svg",
+		shape=triangle];
+}

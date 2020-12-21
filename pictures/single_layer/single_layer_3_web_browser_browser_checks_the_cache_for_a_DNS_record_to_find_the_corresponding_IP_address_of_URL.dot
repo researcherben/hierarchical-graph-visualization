@@ -1,0 +1,13 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	web_browser_checks_the_browsers_inmemory_cache	[label="web browser checks the browser's in-memory cache"];
+	web_browser_checks_the_operating_system_cache	[color=blue,
+		href="single_layer_4_web_browser_checks_the_operating_system_cache.svg",
+		label="web browser checks the operating system cache",
+		shape=rectangle];
+	web_browser_checks_the_browsers_inmemory_cache -> web_browser_checks_the_operating_system_cache;
+	"zoom out"	[color=red,
+		href="single_layer_2_web_browser_shows_webpage.svg",
+		shape=triangle];
+}

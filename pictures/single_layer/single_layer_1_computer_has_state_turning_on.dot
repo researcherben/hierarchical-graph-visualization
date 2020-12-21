@@ -1,0 +1,19 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	while_computer_is_off_power_button_short_circuits_wire	[label="while computer is off power button short circuits wire"];
+	while_computer_is_off_motherboard_does_something_to_CPU	[label="while computer is off motherboard does something to CPU"];
+	while_computer_is_off_power_button_short_circuits_wire -> while_computer_is_off_motherboard_does_something_to_CPU;
+	CPU_executes_BIOS_code_at_bottom_of_memory_map	[label="CPU executes BIOS code at bottom of memory map"];
+	while_computer_is_off_motherboard_does_something_to_CPU -> CPU_executes_BIOS_code_at_bottom_of_memory_map;
+	BIOS_boots_computer	[color=blue,
+		href="single_layer_2_BIOS_boots_computer.svg",
+		label="BIOS boots computer",
+		shape=rectangle];
+	CPU_executes_BIOS_code_at_bottom_of_memory_map -> BIOS_boots_computer;
+	operating_system_starts_desktop	[label="operating system starts desktop"];
+	BIOS_boots_computer -> operating_system_starts_desktop;
+	"zoom out"	[color=red,
+		href="single_layer_0_top.svg",
+		shape=triangle];
+}

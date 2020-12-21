@@ -1,0 +1,33 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	user_opens_web_browser	[color=blue,
+		href="single_layer_2_user_opens_web_browser.svg",
+		label="user opens web browser",
+		shape=rectangle];
+	user_types_URL_of_website	[color=blue,
+		href="single_layer_2_user_types_URL_of_website.svg",
+		label="user types URL of website",
+		shape=rectangle];
+	user_opens_web_browser -> user_types_URL_of_website;
+	web_browser_shows_webpage	[color=blue,
+		href="single_layer_2_web_browser_shows_webpage.svg",
+		label="web browser shows webpage",
+		shape=rectangle];
+	user_types_URL_of_website -> web_browser_shows_webpage;
+	user_reads_webpage	[label="user reads webpage"];
+	web_browser_shows_webpage -> user_reads_webpage;
+	user_clicks_on_link	[color=blue,
+		href="single_layer_2_user_clicks_on_link.svg",
+		label="user clicks on link",
+		shape=rectangle];
+	user_reads_webpage -> user_clicks_on_link;
+	user_closes_web_browser	[color=blue,
+		href="single_layer_2_user_closes_web_browser.svg",
+		label="user closes web browser",
+		shape=rectangle];
+	user_clicks_on_link -> user_closes_web_browser;
+	"zoom out"	[color=red,
+		href="single_layer_0_top.svg",
+		shape=triangle];
+}

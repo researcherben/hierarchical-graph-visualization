@@ -1,0 +1,8 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	web_browser_creates_DOM_tree	[label="web browser creates DOM tree"];
+	"zoom out"	[color=red,
+		href="single_layer_2_web_browser_shows_webpage.svg",
+		shape=triangle];
+}

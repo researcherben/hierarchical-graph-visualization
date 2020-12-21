@@ -1,0 +1,13 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	user_moves_pointer_on_desktop_to_browser_close_icon_using_mouse	[label="user moves pointer on desktop to 
+browser close icon using mouse"];
+	user_clicks_on_browser_close_icon	[label="user clicks on browser close icon"];
+	user_moves_pointer_on_desktop_to_browser_close_icon_using_mouse -> user_clicks_on_browser_close_icon;
+	operating_sytem_closes_web_browser	[label="operating sytem closes web browser"];
+	user_clicks_on_browser_close_icon -> operating_sytem_closes_web_browser;
+	"zoom out"	[color=red,
+		href="single_layer_1_user_browses_the_web.svg",
+		shape=triangle];
+}

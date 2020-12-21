@@ -1,0 +1,8 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	motherboard_uses_power_from_battery	[label="motherboard uses power from battery"];
+	"zoom out"	[color=red,
+		href="single_layer_0_top.svg",
+		shape=triangle];
+}

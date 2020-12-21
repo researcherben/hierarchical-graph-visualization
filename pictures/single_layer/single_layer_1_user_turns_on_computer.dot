@@ -1,0 +1,8 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	while_computer_is_off_user_pushes_power_button	[label="while computer is off user pushes power button"];
+	"zoom out"	[color=red,
+		href="single_layer_0_top.svg",
+		shape=triangle];
+}

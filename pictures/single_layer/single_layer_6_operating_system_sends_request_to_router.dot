@@ -1,0 +1,11 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	operating_system_implements_TCP_connection_to_router	[color=blue,
+		href="single_layer_7_operating_system_implements_TCP_connection_to_router.svg",
+		label="operating system implements TCP connection to router",
+		shape=rectangle];
+	"zoom out"	[color=red,
+		href="single_layer_5_operating_system_checks_the_router_cache.svg",
+		shape=triangle];
+}

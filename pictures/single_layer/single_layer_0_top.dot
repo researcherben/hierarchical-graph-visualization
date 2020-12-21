@@ -1,0 +1,34 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	computer_has_state_off	[color=blue,
+		href="single_layer_1_computer_has_state_off.svg",
+		label="computer has state off",
+		shape=rectangle];
+	user_turns_on_computer	[color=blue,
+		href="single_layer_1_user_turns_on_computer.svg",
+		label="user turns on computer",
+		shape=rectangle];
+	computer_has_state_off -> user_turns_on_computer;
+	computer_has_state_turning_on	[color=blue,
+		href="single_layer_1_computer_has_state_turning_on.svg",
+		label="computer has state turning on",
+		shape=rectangle];
+	user_turns_on_computer -> computer_has_state_turning_on;
+	user_browses_the_web	[color=blue,
+		href="single_layer_1_user_browses_the_web.svg",
+		label="user browses the web",
+		shape=rectangle];
+	computer_has_state_turning_on -> user_browses_the_web;
+	computer_has_state_idle	[color=blue,
+		href="single_layer_1_computer_has_state_idle.svg",
+		label="computer has state idle",
+		shape=rectangle];
+	user_browses_the_web -> computer_has_state_idle;
+	user_turns_off_the_computer	[color=blue,
+		href="single_layer_1_user_turns_off_the_computer.svg",
+		label="user turns off the computer",
+		shape=rectangle];
+	computer_has_state_idle -> user_turns_off_the_computer;
+	user_turns_off_the_computer -> computer_has_state_off;
+}

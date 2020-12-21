@@ -1,0 +1,15 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	BIOS_detects_RAM	[label="BIOS detects RAM"];
+	BIOS_detects_hardware	[label="BIOS detects hardware"];
+	BIOS_detects_RAM -> BIOS_detects_hardware;
+	BIOS_loads_boot_sequence	[color=blue,
+		href="single_layer_3_BIOS_loads_boot_sequence.svg",
+		label="BIOS loads boot sequence",
+		shape=rectangle];
+	BIOS_detects_hardware -> BIOS_loads_boot_sequence;
+	"zoom out"	[color=red,
+		href="single_layer_1_computer_has_state_turning_on.svg",
+		shape=triangle];
+}

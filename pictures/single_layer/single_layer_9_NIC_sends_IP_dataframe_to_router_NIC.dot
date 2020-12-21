@@ -1,0 +1,11 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	NIC_firmware_sends_signal_to_ethernet	[color=blue,
+		href="single_layer_10_NIC_firmware_sends_signal_to_ethernet.svg",
+		label="NIC firmware sends signal to ethernet",
+		shape=rectangle];
+	"zoom out"	[color=red,
+		href="single_layer_8_NIC_sends_SYN_packet_to_router.svg",
+		shape=triangle];
+}

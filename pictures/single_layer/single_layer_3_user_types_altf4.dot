@@ -1,0 +1,10 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	keyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+	mechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+	keyboard_key_presses_mechanical_switch -> mechanical_switch_shorts_electrical_circuit;
+	"zoom out"	[color=red,
+		href="single_layer_2_user_closes_web_browser.svg",
+		shape=triangle];
+}

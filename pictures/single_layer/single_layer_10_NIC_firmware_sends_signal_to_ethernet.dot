@@ -1,0 +1,8 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	NIC_hardware_sends_electrical_signal_to_wire	[label="NIC hardware sends electrical signal to wire"];
+	"zoom out"	[color=red,
+		href="single_layer_9_NIC_sends_IP_dataframe_to_router_NIC.svg",
+		shape=triangle];
+}

@@ -1,0 +1,41 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	web_browser_separate_path_from_domain_name_from_protocol	[label="web browser separate path from domain name from protocol"];
+	web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL	[color=blue,
+		href="single_layer_3_web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL.svg",
+		label="web browser browser checks the cache for a DNS record 
+to find the corresponding IP address of URL",
+		shape=rectangle];
+	web_browser_separate_path_from_domain_name_from_protocol -> web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL;
+	web_browser_initiates_TCP_connection_with_the_remote_server	[label="web browser initiates TCP connection with the remote server"];
+	web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL -> web_browser_initiates_TCP_connection_with_the_remote_server;
+	web_browser_sends_an_HTTP_request_to_the_remote_server	[label="web browser sends an HTTP request to the remote server"];
+	web_browser_initiates_TCP_connection_with_the_remote_server -> web_browser_sends_an_HTTP_request_to_the_remote_server;
+	server_handles_the_request	[label="server handles the request"];
+	web_browser_sends_an_HTTP_request_to_the_remote_server -> server_handles_the_request;
+	server_sends_back_an_HTTP_response	[label="server sends back an HTTP response"];
+	server_handles_the_request -> server_sends_back_an_HTTP_response;
+	web_browser_renders_the_HTML_content	[color=blue,
+		href="single_layer_3_web_browser_renders_the_HTML_content.svg",
+		label="web browser renders the HTML content",
+		shape=rectangle];
+	server_sends_back_an_HTTP_response -> web_browser_renders_the_HTML_content;
+	web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript	[label="web browser sends additional requests for objects embedded in 
+the html file - CSS files, images, javascript"];
+	web_browser_renders_the_HTML_content -> web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript;
+	server_sends_back_additional_content	[label="server sends back additional content"];
+	web_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_images_javascript -> server_sends_back_additional_content;
+	web_browser_process_CSS_markup_and_build_the_CSSOM_tree	[label="web browser process CSS markup and build the CSSOM tree"];
+	server_sends_back_additional_content -> web_browser_process_CSS_markup_and_build_the_CSSOM_tree;
+	web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree	[label="web browser combine the DOM and CSSOM into a render tree"];
+	web_browser_process_CSS_markup_and_build_the_CSSOM_tree -> web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree;
+	web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow	[label="web browser run the layout on the render tree to compute 
+the geometry of each node aka layout  aka reflow"];
+	web_browser_combine_the_DOM_and_CSSOM_into_a_render_tree -> web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow;
+	web_browser_paint_the_individual_nodes_to_the_screen	[label="web browser paint the individual nodes to the screen"];
+	web_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_aka_layout_aka_reflow -> web_browser_paint_the_individual_nodes_to_the_screen;
+	"zoom out"	[color=red,
+		href="single_layer_1_user_browses_the_web.svg",
+		shape=triangle];
+}

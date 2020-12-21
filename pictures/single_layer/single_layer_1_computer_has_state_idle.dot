@@ -1,0 +1,8 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	operating_system_waiting_for_interrupt	[label="operating system waiting for interrupt"];
+	"zoom out"	[color=red,
+		href="single_layer_0_top.svg",
+		shape=triangle];
+}

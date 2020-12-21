@@ -1,0 +1,18 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	user_moves_pointer_on_desktop_to_browser_icon_using_mouse	[color=blue,
+		href="single_layer_3_user_moves_pointer_on_desktop_to_browser_icon_using_mouse.svg",
+		label="user moves pointer on desktop to browser icon using mouse",
+		shape=rectangle];
+	user_clicks_on_desktop_browser_icon	[color=blue,
+		href="single_layer_3_user_clicks_on_desktop_browser_icon.svg",
+		label="user clicks on desktop browser icon",
+		shape=rectangle];
+	user_moves_pointer_on_desktop_to_browser_icon_using_mouse -> user_clicks_on_desktop_browser_icon;
+	operating_sytem_launches_web_browser	[label="operating sytem launches web browser"];
+	user_clicks_on_desktop_browser_icon -> operating_sytem_launches_web_browser;
+	"zoom out"	[color=red,
+		href="single_layer_1_user_browses_the_web.svg",
+		shape=triangle];
+}

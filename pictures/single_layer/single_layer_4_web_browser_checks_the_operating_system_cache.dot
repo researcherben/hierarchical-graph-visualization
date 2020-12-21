@@ -1,0 +1,15 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	web_browser_make_a_system_call_to_operating_system	[label="web browser make a system call to operating system"];
+	operating_system_checks_the_local_cache_in_OS	[label="operating system checks the local cache in OS"];
+	web_browser_make_a_system_call_to_operating_system -> operating_system_checks_the_local_cache_in_OS;
+	operating_system_checks_the_router_cache	[color=blue,
+		href="single_layer_5_operating_system_checks_the_router_cache.svg",
+		label="operating system checks the router cache",
+		shape=rectangle];
+	operating_system_checks_the_local_cache_in_OS -> operating_system_checks_the_router_cache;
+	"zoom out"	[color=red,
+		href="single_layer_3_web_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_address_of_URL.svg",
+		shape=triangle];
+}

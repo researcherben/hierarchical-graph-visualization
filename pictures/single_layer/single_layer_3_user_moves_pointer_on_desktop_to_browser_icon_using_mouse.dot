@@ -1,0 +1,16 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	mouse_hardware_moves_across_surface	[label="mouse hardware moves across surface"];
+	mouse_hardware_light_sensor_detects_movement_using_light	[label="mouse hardware light sensor detects movement using light"];
+	mouse_hardware_moves_across_surface -> mouse_hardware_light_sensor_detects_movement_using_light;
+	mouse_hardware_sends_signal_across_USB_cable	[label="mouse hardware sends signal across USB cable"];
+	mouse_hardware_light_sensor_detects_movement_using_light -> mouse_hardware_sends_signal_across_USB_cable;
+	operating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+	mouse_hardware_sends_signal_across_USB_cable -> operating_system_translates_signal_from_USB_cable;
+	operating_system_moves_pointer_on_computer_screen	[label="operating system moves pointer on computer screen"];
+	operating_system_translates_signal_from_USB_cable -> operating_system_moves_pointer_on_computer_screen;
+	"zoom out"	[color=red,
+		href="single_layer_2_user_opens_web_browser.svg",
+		shape=triangle];
+}

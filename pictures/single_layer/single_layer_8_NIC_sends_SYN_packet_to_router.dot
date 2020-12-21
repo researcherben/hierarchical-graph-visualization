@@ -1,0 +1,13 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	NIC_creates_IP_dataframe	[label="NIC creates IP dataframe"];
+	NIC_sends_IP_dataframe_to_router_NIC	[color=blue,
+		href="single_layer_9_NIC_sends_IP_dataframe_to_router_NIC.svg",
+		label="NIC sends IP dataframe to router NIC",
+		shape=rectangle];
+	NIC_creates_IP_dataframe -> NIC_sends_IP_dataframe_to_router_NIC;
+	"zoom out"	[color=red,
+		href="single_layer_7_operating_system_implements_TCP_connection_to_router.svg",
+		shape=triangle];
+}

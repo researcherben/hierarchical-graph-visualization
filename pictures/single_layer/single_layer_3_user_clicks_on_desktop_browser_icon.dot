@@ -1,0 +1,14 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	mouse_hardware_depress_mechanical_switch	[label="mouse hardware depress mechanical switch"];
+	mouse_hardware_sends_signal_across_USB_cable	[label="mouse hardware sends signal across USB cable"];
+	mouse_hardware_depress_mechanical_switch -> mouse_hardware_sends_signal_across_USB_cable;
+	operating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+	mouse_hardware_sends_signal_across_USB_cable -> operating_system_translates_signal_from_USB_cable;
+	operating_system_acts_on_desktop_icon	[label="operating system acts on desktop icon"];
+	operating_system_translates_signal_from_USB_cable -> operating_system_acts_on_desktop_icon;
+	"zoom out"	[color=red,
+		href="single_layer_2_user_opens_web_browser.svg",
+		shape=triangle];
+}
