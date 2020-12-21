@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# assumptions:
+# * each tuple is represents a unique event or action or state
+
 def user_types_on_keyboard():
     return [
       ("keyboard key","presses","mechanical switch"),
@@ -25,21 +28,21 @@ def user_clicks_mouse():
 
 list_of_task_dicts = [
 {"user story": [
-  ("state:","computer","is off"),
-  ("action:","user","turns on","computer"),
-  ("state:","computer","is turning on"),
-  ("action:","user","browses","the web"),
-  ("state:","computer","is idle"),
-  ("action:","user","turns off","the computer"),
-  ("state:","computer","is off")
+  ("computer","has state","off"),
+  ("user","turns on","computer"),
+  ("computer","has state","turning on"),
+  ("user","browses","the web"),
+  ("computer","has state","idle"),
+  ("user","turns off","the computer"),
+  ("computer","has state","off")
 ]},
-{("state:","computer","is idle"):[
+{("computer","has state","idle"):[
   ("operating system","waiting for","interrupt")
 ]},
-{("action:","user","turns on","computer"):[
+{("user","turns on","computer"):[
   ("while computer is off","user","pushes","power button")
 ]},
-{("state:","computer","is turning on"):[
+{("computer","has state","turning on"):[
   ("while computer is off","power button","short circuits","wire"),
   ("while computer is off","motherboard","does something to","CPU"),
   ("CPU","executes BIOS code at bottom of","memory map"),
@@ -55,7 +58,7 @@ list_of_task_dicts = [
   ("BIOS","boots","devices directly into your OS-specific bootloader"),
   ("BIOS","boots","devices (any hard disk, or anything emulating a hard disk) into an MBR")
 ]},
-{("action:","user","browses","the web"):[
+{("user","browses","the web"):[
   ("user","opens","web browser"),
   ("user","types","URL of website"),
   ("web browser","shows","webpage"),
@@ -133,20 +136,20 @@ list_of_task_dicts = [
 ]},
 {("user","moves pointer on desktop to browser icon using","mouse"):user_moves_mouse()},
 {("user","clicks on","desktop browser icon"):user_clicks_mouse()},
-{("action:","user","turns off","the computer"):[
+{("user","turns off","the computer"):[
   ("while computer is on","user","pushes","power button"),
   ("while computer is on","power button","short circuits","wire"),
   ("while computer is on","motherboard","does something to","CPU"),
 ]},
-{("action:","user","turns off","the computer"):[
+{("user","turns off","the computer"):[
   ("user","selects","shutdown menu option on desktop"),
   ("operating system","terminates","desktop"),
 ]},
-{("action:","user","turns off","the computer"):[
+{("user","turns off","the computer"):[
   ("user","types", "REISUB"),
 ]},
 {("user","types", "REISUB"): user_types_on_keyboard()},
-{("state:","computer","is off"):[
+{("computer","has state","off"):[
    ("motherboard","uses power from","battery")
 ]}
 ]

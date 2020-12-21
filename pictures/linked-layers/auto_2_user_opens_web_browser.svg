@@ -143,7 +143,7 @@
 <!-- zoom out -->
 <g id="node13" class="node">
 <title>zoom out</title>
-<g id="a_node13"><a xlink:href="auto_1_action_user_browses_the_web.svg" xlink:title="zoom out">
+<g id="a_node13"><a xlink:href="auto_1_user_browses_the_web.svg" xlink:title="zoom out">
 <polygon fill="none" stroke="red" points="1009,-353 908.82,-318.5 1109.18,-318.5 1009,-353"/>
 <text text-anchor="middle" x="1009" y="-326.3" font-family="Times,serif" font-size="14.00">zoom out</text>
 </a>
