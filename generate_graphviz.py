@@ -47,9 +47,52 @@ def task_has_children_in_list_of_task_dicts(task_tuple_to_test: Tuple[str, str, 
 
 
 
-def recurse_generate_svg(list_of_subtasks: list,
+def single_layer(list_of_task_dicts: list,
+                 list_of_task_tuples: list,
+                 recursive_depth: int,
+                 parent: str,
+                 file_name: str) -> None:
+    """
+    each SVG has nodes and hyperlinks; no subgraphs
+    """
+    use_case = AGraph(directed=True)
+    use_case.clear()
+    use_case.graph_attr.update(compound="true")
+    for task_tup in list_of_task_tuples:
+        #print(task_tup)
+        if task_has_children_in_list_of_task_dicts(task_tup, list_of_task_dicts):
+            #print("    has child, so hyperlink")
+            use_case.add_node(smush(task_tup),
+                              label=with_spaces(task_tup),
+                              color="blue", # to indicate hyperlink
+                              shape="rectangle", # to distinguish from nodes that do not have children
+                              href="single_layer_"+str(recursive_depth+1)+"_"+smush(task_tup)+".svg")
+            for task_dist in list_of_task_dicts:
+                if task_tup in task_dist.keys():
+                    #for task_tup in task_dist[task_tup]:
+                    single_layer(list_of_task_dicts,
+                                 task_dist[task_tup],
+                                 recursive_depth+1,
+                                 "single_layer_"+str(recursive_depth)+"_"+smush(task_tup),
+                                 file_name=smush(task_tup))
+        else:
+            #print("    no children, so create node")
+            use_case.add_node(smush(task_tup), label=with_spaces(task_tup))
+    if recursive_depth>0:
+        use_case.add_node("zoom out", href=parent+".svg", color="red", shape="triangle")
+
+    for index, task_tup in enumerate(list_of_task_tuples[1:]):
+        use_case.add_edge(smush(list_of_task_tuples[index]),
+                          smush(task_tup))
+    use_case.write("single_layer_"+str(recursive_depth)+"_"+file_name+".dot")
+    use_case.draw("single_layer_"+str(recursive_depth)+"_"+file_name+".svg", format="svg", prog="dot")
+
+    return
+
+
+def this_layer_plus_one(list_of_task_dicts: list,
+                        list_of_subtasks: list,
                          output_filename: str,
-                         list_of_task_dicts: list,
                          recursive_depth: int,
                          parent: str) -> None:
     """
@@ -58,8 +101,8 @@ def recurse_generate_svg(list_of_subtasks: list,
     """
 
     # need the filename prefix for both this file and the child files
-    fnamel = "auto_"+str(recursive_depth)+"_"
-    fnamel1 = "auto_"+str(recursive_depth+1)+"_"
+    fnamel = "layer_plus_one_"+str(recursive_depth)+"_"
+    fnamel1 = "layer_plus_one_"+str(recursive_depth+1)+"_"
 
     # initialize a new graph for this layer
     use_case = AGraph(directed=True, comment=output_filename)#, compound=True)
@@ -147,8 +190,11 @@ def recurse_generate_svg(list_of_subtasks: list,
     for task_tuple in list_of_subtasks:
         for index, this_dict in enumerate(list_of_task_dicts):
             if task_tuple in this_dict.keys():
-                recurse_generate_svg(list_of_task_dicts[index][task_tuple], smush(task_tuple), list_of_task_dicts, recursive_depth+1,
-                fnamel+output_filename)
+                this_layer_plus_one(list_of_task_dicts,
+                                    list_of_task_dicts[index][task_tuple],
+                                    smush(task_tuple),
+                                    recursive_depth+1,
+                                    fnamel+output_filename)
     return
 
 def generate_single_svg(list_of_task_dicts: list,
@@ -196,7 +242,17 @@ def add_subgraph(list_of_task_dicts: list, use_case, list_of_task_tuples: list, 
 
 # import generate_graphviz as gg
 if __name__ == "__main__":
-    recurse_generate_svg(list_of_task_dicts[0]["user story"], "how_to_use_the_internet", list_of_task_dicts, recursive_depth=0, parent=None)
+    single_layer(list_of_task_dicts,
+                 list_of_task_tuples=list_of_task_dicts[0]["user story"],
+                 recursive_depth=0,
+                 parent=None,
+                 file_name="top")
+
+    this_layer_plus_one(list_of_task_dicts,
+                        list_of_subtasks=list_of_task_dicts[0]["user story"],
+                        output_filename="how_to_use_the_internet",
+                        recursive_depth=0,
+                        parent=None)
 
     #the following generates warnings
     generate_single_svg(list_of_task_dicts,
