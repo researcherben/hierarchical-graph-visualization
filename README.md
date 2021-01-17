@@ -57,3 +57,5 @@ That led to the current data structure, a list of dictionaries. The key is the s
 # Related similar projects
 
 https://github.com/LoW12/FractalGraph
+
+https://statecharts.github.io/
