@@ -51,7 +51,7 @@ That led to the current data structure, a list of dictionaries. The key is the s
 
 # Jargon
 
-* "nested graphs" 
+* "nested graphs" is used in (A Nested-Graph Model for the Representation and Manipulation of Complex Objects)[https://www.dcs.bbk.ac.uk/~mark/download/tois.pdf] by Poulovassilis and Mark Levene
 * "hypernode graph" seems the best description. For a mathematical thesis on the topic, see (Hypernode graphs for learning from binary relations between sets of objects)[https://hal.archives-ouvertes.fr/tel-01246240/document] by Thomas Ricatte
 
 # Related similar projects
