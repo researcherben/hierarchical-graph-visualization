@@ -1,6 +1,8 @@
 # about
-The nodes of a hyper graph can be expanded into graphs.   
+The nodes of a hypernode graph can be expanded into graphs.   
 Implemented in [Graphviz](https://graphviz.org/) using [pygraphviz](https://pygraphviz.github.io/); produces hyperlinked SVG files.
+
+_why_: hypernode graphs show up in a variety of knowledge management scenarios, so a visualization tool is useful. 
 
 ## how to use
 
