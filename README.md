@@ -47,3 +47,13 @@ would be appropriate for a hypergraph.
     {4: 4942, 5: 99}
 
 That led to the current data structure, a list of dictionaries. The key is the subgraph and the list of values is the sequential steps used to implement the key.
+
+
+# Jargon
+
+* "nested graphs" 
+* "hypernode graph" seems the best description. For a mathematical thesis on the topic, see (Hypernode graphs for learning from binary relations between sets of objects)[https://hal.archives-ouvertes.fr/tel-01246240/document] by Thomas Ricatte
+
+# Related similar projects
+
+https://github.com/LoW12/FractalGraph
