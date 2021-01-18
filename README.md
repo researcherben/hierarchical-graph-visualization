@@ -1,6 +1,8 @@
 # about
-The nodes of a hyper graph can be expanded into graphs.   
+The nodes of a hypernode graph can be expanded into graphs.   
 Implemented in [Graphviz](https://graphviz.org/) using [pygraphviz](https://pygraphviz.github.io/); produces hyperlinked SVG files.
+
+_why_: hypernode graphs show up in a variety of knowledge management scenarios, so a visualization tool is useful. 
 
 ## how to use
 
@@ -47,3 +49,15 @@ would be appropriate for a hypergraph.
     {4: 4942, 5: 99}
 
 That led to the current data structure, a list of dictionaries. The key is the subgraph and the list of values is the sequential steps used to implement the key.
+
+
+# Jargon
+
+* "nested graphs" is used in (A Nested-Graph Model for the Representation and Manipulation of Complex Objects)[https://www.dcs.bbk.ac.uk/~mark/download/tois.pdf] by Poulovassilis and Mark Levene
+* "hypernode graph" seems the best description. For a mathematical thesis on the topic, see (Hypernode graphs for learning from binary relations between sets of objects)[https://hal.archives-ouvertes.fr/tel-01246240/document] by Thomas Ricatte
+
+# Related similar projects
+
+https://github.com/LoW12/FractalGraph
+
+https://statecharts.github.io/
