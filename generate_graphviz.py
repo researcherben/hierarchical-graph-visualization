@@ -8,7 +8,7 @@ import random
 from typing import Tuple
 
 # import the data structures from a separate file
-from browse_internet import list_of_task_dicts#, cross_phase_transitions
+from browse_internet import list_of_task_dicts
 
 def smush(tup: Tuple[str, str, str]) -> str:
     """
@@ -32,7 +32,6 @@ def with_spaces(tup: Tuple[str, str, str]) -> str:
         return new_str.strip()
     return tup_as_str
 
-
 def task_has_children_in_list_of_task_dicts(task_tuple_to_test: Tuple[str, str, str], list_of_task_dicts: list) -> bool:
     """
     is a tuple present as a key in the list of dicts?
@@ -45,218 +44,43 @@ def task_has_children_in_list_of_task_dicts(task_tuple_to_test: Tuple[str, str, 
             return True
     return False
 
-
-
-def single_layer(list_of_task_dicts: list,
-                 list_of_task_tuples: list,
-                 recursive_depth: int,
-                 parent: str,
-                 file_name: str) -> None:
-    """
-    each SVG has nodes and hyperlinks; no subgraphs
-    """
-    use_case = AGraph(directed=True)
-    use_case.clear()
-    use_case.graph_attr.update(compound="true")
-    for task_tup in list_of_task_tuples:
-        #print(task_tup)
-        if task_has_children_in_list_of_task_dicts(task_tup, list_of_task_dicts):
-            #print("    has child, so hyperlink")
-            use_case.add_node(smush(task_tup),
-                              label=with_spaces(task_tup),
-                              color="blue", # to indicate hyperlink
-                              shape="rectangle", # to distinguish from nodes that do not have children
-                              href="single_layer_"+str(recursive_depth+1)+"_"+smush(task_tup)+".svg")
-            for task_dist in list_of_task_dicts:
-                if task_tup in task_dist.keys():
-                    #for task_tup in task_dist[task_tup]:
-                    single_layer(list_of_task_dicts,
-                                 task_dist[task_tup],
-                                 recursive_depth+1,
-                                 "single_layer_"+str(recursive_depth)+"_"+file_name,
-                                 file_name=smush(task_tup))
-        else:
-            #print("    no children, so create node")
-            use_case.add_node(smush(task_tup), label=with_spaces(task_tup))
-    if recursive_depth>0:
-        use_case.add_node("zoom out", href=parent+".svg", color="red", shape="triangle")
-
-    for index, task_tup in enumerate(list_of_task_tuples[1:]):
-        use_case.add_edge(smush(list_of_task_tuples[index]),
-                          smush(task_tup))
-    use_case.write("single_layer_"+str(recursive_depth)+"_"+file_name+".dot")
-    use_case.draw("single_layer_"+str(recursive_depth)+"_"+file_name+".svg", format="svg", prog="dot")
-
-    return
-
-
-def this_layer_plus_one(list_of_task_dicts: list,
-                        list_of_subtasks: list,
-                         output_filename: str,
-                         recursive_depth: int,
-                         parent: str) -> None:
-    """
-    recursively create hyperlinked SVGs using GraphViz
-    input data structure is a list of dicts
+def subgraph(task_tuple_to_test: Tuple[str, str, str], list_of_task_dicts: list) -> list:
     """
 
-    # need the filename prefix for both this file and the child files
-    fnamel = "layer_plus_one_"+str(recursive_depth)+"_"
-    fnamel1 = "layer_plus_one_"+str(recursive_depth+1)+"_"
-
-    # initialize a new graph for this layer
-    use_case = AGraph(directed=True, comment=output_filename)#, compound=True)
-    use_case.clear()
-    use_case.graph_attr.update(compound="true")
-    for task in list_of_subtasks:
-        #print(task)
-        for this_dict in list_of_task_dicts:
-            if list(this_dict.keys())[0] == task:
-
-                #unique_subgraph_name = task_without_spaces#+"_"+str(random.randint(1000,9999))
-                if (task_has_children_in_list_of_task_dicts(task, list_of_task_dicts)):
-                    sg = use_case.subgraph(name="cluster_"+smush(task),
-                                           label=with_spaces(task),
-                                           href=fnamel1+smush(task)+".svg")
-                else: # no href to SVG because there are no child nodes
-                    sg = use_case.subgraph(name="cluster_"+smush(task),
-                                           label=with_spaces(task))
-
-                sg.add_node(smush(task), style="invis")
-
-
-                #print(task)
-                #print(list(this_dict.keys())[0])
-                subitem_list = list(this_dict.values())[0]
-#                print(subitem_list)
-
-                if len(subitem_list)<2: # no edges to connect
-                    if (task_has_children_in_list_of_task_dicts(subitem_list[0], list_of_task_dicts)):
-                        sg.add_node(smush(task)+smush(subitem_list[0]),
-                                                               label=with_spaces(subitem_list[0]),
-                                                               href=fnamel1+smush(task)+".svg",
-                                                               color="blue",
-                                                               shape="rectangle")
-                    else:
-                        sg.add_node(smush(task)+smush(subitem_list[0]),
-                                                               label=with_spaces(subitem_list[0]),
-                                                               shape="rectangle")
-                    sg.add_edge(smush(task)+smush(subitem_list[0]),smush(task),style="invis")
-
-                else:
-                    for index,subitem in enumerate(subitem_list[1:]):
-                        #print('   ',subitem)
-                        if (task_has_children_in_list_of_task_dicts(subitem_list[index], list_of_task_dicts)):
-                            sg.add_node(smush(task)+smush(subitem_list[index]),
-                                                                   label=with_spaces(subitem_list[index]),
-                                                                   href=fnamel1+smush(task)+".svg",
-                                                                   color="blue",
-                                                                   shape="rectangle")
-                        else: # no children to link to
-                            sg.add_node(smush(task)+smush(subitem_list[index]),
-                                                                   label=with_spaces(subitem_list[index]),
-                                                                   shape="rectangle")
-                        if (task_has_children_in_list_of_task_dicts(subitem, list_of_task_dicts)):
-                            sg.add_node(smush(task)+smush(subitem),
-                                                                   label=with_spaces(subitem),
-                                                                   href=fnamel1+smush(task)+".svg",
-                                                                   color="blue",
-                                                                   shape="rectangle")
-                        else:
-                            sg.add_node(smush(task)+smush(subitem),
-                                                                   label=with_spaces(subitem),
-                                                                   shape="rectangle")
-
-                        # every sequence of tasks is ordered, so link task with prior task
-                        sg.add_edge(smush(task)+smush(subitem_list[index]),
-                                    smush(task)+smush(subitem))
-                        if index==len(subitem_list): # last item links to invisible node in order to force invisible node to bottom of subgraph
-                            sg.add_edge(smush(task)+smush(subitem_list[index]),smush(task),style="invis")
-
-    for index,task_tup in enumerate(list_of_subtasks[1:]):
-        # use_case.add_node(smush(list_of_subtasks[index]),label=with_spaces(task_tup),shape="rectangle")
-        # use_case.add_node(smush(task_tup),label=with_spaces(task_tup),shape="rectangle")
-        use_case.add_edge(smush(list_of_subtasks[index]),
-                          smush(task_tup),
-                          ltail="cluster_"+smush(list_of_subtasks[index]),
-                          lhead="cluster_"+smush(task_tup))
-
-    if recursive_depth>0:
-        use_case.add_node("zoom out", href=parent+".svg", color="red", shape="triangle")
-    #use_case.write()
-    use_case.draw(fnamel+output_filename+".svg", format="svg", prog="dot")
-    #print("drew SVG for ", output_filename)
-
-    for task_tuple in list_of_subtasks:
-        for index, this_dict in enumerate(list_of_task_dicts):
-            if task_tuple in this_dict.keys():
-                this_layer_plus_one(list_of_task_dicts,
-                                    list_of_task_dicts[index][task_tuple],
-                                    smush(task_tuple),
-                                    recursive_depth+1,
-                                    fnamel+output_filename)
-    return
-
-def generate_single_svg(list_of_task_dicts: list,
-                        list_of_toplevel_steps: list,
-                        file_name: str) -> None:
     """
-    make a single graph with a bunch of subgraphs
-    in contrast to the layered SVG approach, here each node name must be unique
-    """
-    use_case = AGraph(directed=True)
-    use_case.clear()
-    use_case.graph_attr.update(compound="true")
-    add_subgraph(list_of_task_dicts, use_case, list_of_toplevel_steps, parent="")
-    use_case.write(file_name+".dot")
-    use_case.draw(file_name+".svg", format="svg", prog="dot")
-    return
+    for task_dist in list_of_task_dicts:
+        if task_tuple_to_test in task_dist.keys():
+            return list(task_dist.values())[0]
+    return None
 
-# TODO: how to tell mypy that the type is "AGraph" for input and output?
-def add_subgraph(list_of_task_dicts: list, use_case, list_of_task_tuples: list, parent: str):
-    """
-    recursively add subgraphs
-    """
-    for task_tup in list_of_task_tuples:
-        #print(task_tup)
-        if task_has_children_in_list_of_task_dicts(task_tup, list_of_task_dicts):
-            #print("    has child, so create a subgraph")
-            sg = use_case.subgraph(name="cluster_"+parent+smush(task_tup),
-                                   label=with_spaces(task_tup))
-            sg.add_node(parent+smush(task_tup), style="invis") # where to connect edges
-            for task_dist in list_of_task_dicts:
-                if task_tup in task_dist.keys():
-                    #for task_tup in task_dist[task_tup]:
-                    add_subgraph(list_of_task_dicts, sg, task_dist[task_tup], parent=parent+smush(task_tup))
-        else:
-            #print("    no children, so create node")
-            use_case.add_node(parent+smush(task_tup), label=with_spaces(task_tup))
-
-    for index, task_tup in enumerate(list_of_task_tuples[1:]):
-        use_case.add_edge(parent+smush(list_of_task_tuples[index]),
-                          parent+smush(task_tup),
-                          ltail="cluster_"+parent+smush(list_of_task_tuples[index]),
-                          lhead="cluster_"+parent+smush(task_tup))
-    return
-
-
-# import generate_graphviz as gg
 if __name__ == "__main__":
-    single_layer(list_of_task_dicts,
-                 list_of_task_tuples=list_of_task_dicts[0]["user story"],
-                 recursive_depth=0,
-                 parent=None,
-                 file_name="top")
+    use_case = AGraph(directed=True)
+    use_case.clear()
+    use_case.graph_attr.update(compound="true")
 
-    this_layer_plus_one(list_of_task_dicts,
-                        list_of_subtasks=list_of_task_dicts[0]["user story"],
-                        output_filename="how_to_use_the_internet",
-                        recursive_depth=0,
-                        parent=None)
+    for edge_pair in list_of_task_dicts[0]["user story"]:
+        #print(with_spaces(edge_pair[0]),"to", with_spaces(edge_pair[1]))
 
-    #the following generates warnings
-    generate_single_svg(list_of_task_dicts,
-                        list_of_toplevel_steps=list_of_task_dicts[0]["user story"],
-                        file_name = "all_in_one")
+        if task_has_children_in_list_of_task_dicts(edge_pair[0], list_of_task_dicts):
+            sg = use_case.subgraph(name="cluster_"+smush(edge_pair[0]),
+                                   label=with_spaces(edge_pair[0]))
+            sg.add_node(smush(edge_pair[0]), style="invis")
+            for sg_edge_pair in subgraph(edge_pair[0],list_of_task_dicts):
+                if(len(sg_edge_pair)==3): # single node
+                    sg.add_node(smush(sg_edge_pair),label=with_spaces(sg_edge_pair))
+                else:
+                    print(sg_edge_pair)
+        else: # node does not have children
+            use_case.add_node(smush(edge_pair[0]),label=with_spaces(edge_pair[0]))
 
-    print("done!")
+        if task_has_children_in_list_of_task_dicts(edge_pair[1], list_of_task_dicts):
+            sg = use_case.subgraph(name="cluster_"+smush(edge_pair[1]),
+                                   label=with_spaces(edge_pair[1]))
+            sg.add_node(smush(edge_pair[1]), style="invis")
+        else:
+            use_case.add_node(smush(edge_pair[1]),label=with_spaces(edge_pair[1]))
+        use_case.add_edge(smush(edge_pair[0]),smush(edge_pair[1]))
+
+
+    use_case.write("single_layer.dot")
+    use_case.draw("single_layer.svg", format="svg", prog="dot")
