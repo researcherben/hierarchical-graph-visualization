@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 # assumptions:
 # * each tuple is represents a unique event or action or state
 
@@ -51,7 +52,10 @@ list_of_task_dicts = [
   ("operating system","waiting for","interrupt")
 ]},
 {("user","turns on","computer"):[
-  ("user","pushes","power button")
+  (("user","pushes","power button"),
+   ("power button","short circuits","wire")),
+  (("power button","short circuits","wire"),
+   ("motherboard","does something to","CPU"))
 ]},
 {("computer","has state","turning on"):[
   (("power button","short circuits","wire"),
@@ -87,10 +91,8 @@ list_of_task_dicts = [
 ]},
 {("user","clicks","on link"):user_clicks_mouse()},
 {("user","closes","web browser"):[
-  ("user","types","alt-f4")
-]},
-{("user","types","alt-f4"):user_types_on_keyboard()},
-{("user","closes","web browser"):[
+  ("user","types","alt-f4"),
+# alternative method
   (("user","moves pointer on desktop to browser close icon using","mouse"),
    ("user","clicks on","browser close icon")),
   (("user","clicks on","browser close icon"),
@@ -174,14 +176,12 @@ list_of_task_dicts = [
   (("user","pushes","power button"),
    ("power button","short circuits","wire")),
   (("power button","short circuits","wire"),
-   ("motherboard","does something to","CPU"))
-]},
-{("user","turns off","the computer"):[
+   ("motherboard","does something to","CPU")),
+# another option
   (("user","selects","shutdown menu option on desktop"),
-   ("operating system","terminates","desktop"))
-]},
-{("user","turns off","the computer"):[
-  ("user","types", "REISUB"),
+   ("operating system","terminates","desktop")),
+# another option
+  ("user","types", "REISUB")
 ]},
 {("user","types", "REISUB"): user_types_on_keyboard()},
 {("computer","has state","off"):[
