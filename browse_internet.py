@@ -49,7 +49,7 @@ list_of_task_dicts = [
    ("computer","has state","off"))
 ]},
 {("computer","has state","idle"):[
-  ("operating system","waiting for","interrupt")
+  (("operating system","waiting for","interrupt"),None)
 ]},
 {("user","turns on","computer"):[
   (("user","pushes","power button"),
@@ -91,7 +91,7 @@ list_of_task_dicts = [
 ]},
 {("user","clicks","on link"):user_clicks_mouse()},
 {("user","closes","web browser"):[
-  ("user","types","alt-f4"),
+  (("user","types","alt-f4"),None),
 # alternative method
   (("user","moves pointer on desktop to browser close icon using","mouse"),
    ("user","clicks on","browser close icon")),
@@ -127,7 +127,7 @@ list_of_task_dicts = [
    ("web browser","paint the individual nodes to the screen"))
 ]},
 {("web browser","renders the","HTML content"):[
-  ("web browser","creates","DOM tree")
+  (("web browser","creates","DOM tree"),None)
 ]},
 {("web browser","browser checks the cache for a DNS record to find the corresponding IP address of URL"):[
   (("web browser","checks the","browser's in-memory cache"),
@@ -146,7 +146,7 @@ list_of_task_dicts = [
    ("router","checks the","ISP cache"))
 ]},
 {("operating system","sends request to","router"):[
-  ("operating system","implements TCP connection to","router")#{} osilayer="4 = transport">
+  (("operating system","implements TCP connection to","router"),None)#{} osilayer="4 = transport">
 ]},
 {("operating system","implements TCP connection to","router"):[
   (("NIC","sends SYN packet to","router"),
@@ -159,10 +159,10 @@ list_of_task_dicts = [
    ("NIC","sends IP dataframe to","router NIC"))
 ]},
 {("NIC","sends IP dataframe to","router NIC"):[
-  ("NIC firmware","sends signal to","ethernet")
+  (("NIC firmware","sends signal to","ethernet"),None)
 ]},
 {("NIC firmware","sends signal to","ethernet"):[
-  ("NIC hardware","sends electrical signal to","wire")
+  (("NIC hardware","sends electrical signal to","wire"),None)
 ]},
 {("user","opens","web browser"):[
   (("user","moves pointer on desktop to browser icon using","mouse"),
@@ -181,10 +181,10 @@ list_of_task_dicts = [
   (("user","selects","shutdown menu option on desktop"),
    ("operating system","terminates","desktop")),
 # another option
-  ("user","types", "REISUB")
+  (("user","types", "REISUB"),None)
 ]},
 {("user","types", "REISUB"): user_types_on_keyboard()},
 {("computer","has state","off"):[
-   ("motherboard","uses power from","battery")
+   (("motherboard","uses power from","battery"),None)
 ]}
 ]
