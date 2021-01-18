@@ -1,0 +1,23 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_user_brows_user_closeuser_types_altf4 {
+		graph [label="user types alt-f4"];
+		user_story_user_brows_user_closeuser_types_altf4	[style=invis];
+		user_story_user_brows_user_closeuser_types_altf4keyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+		user_story_user_brows_user_closeuser_types_altf4mechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+		user_story_user_brows_user_closeuser_types_altf4keyboard_key_presses_mechanical_switch -> user_story_user_brows_user_closeuser_types_altf4mechanical_switch_shorts_electrical_circuit;
+		user_story_user_brows_user_closeuser_types_altf4keyboard_hardware_sends_signal_across_USB_cable	[label="keyboard hardware sends signal across USB cable"];
+		user_story_user_brows_user_closeuser_types_altf4mechanical_switch_shorts_electrical_circuit -> user_story_user_brows_user_closeuser_types_altf4keyboard_hardware_sends_signal_across_USB_cable;
+		user_story_user_brows_user_closeuser_types_altf4operating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+		user_story_user_brows_user_closeuser_types_altf4keyboard_hardware_sends_signal_across_USB_cable -> user_story_user_brows_user_closeuser_types_altf4operating_system_translates_signal_from_USB_cable;
+		user_story_user_brows_user_closeuser_types_altf4operating_system_sends_key_to_infocus_application	[label="operating system sends key to in-focus application"];
+		user_story_user_brows_user_closeuser_types_altf4operating_system_translates_signal_from_USB_cable -> user_story_user_brows_user_closeuser_types_altf4operating_system_sends_key_to_infocus_application;
+	}
+	user_story_user_brows_user_closeuser_moves_pointer_on_desktop_to_browser_close_icon_using_mouse	[label="user moves pointer on desktop to 
+browser close icon using mouse"];
+	user_story_user_brows_user_closeuser_clicks_on_browser_close_icon	[label="user clicks on browser close icon"];
+	user_story_user_brows_user_closeuser_moves_pointer_on_desktop_to_browser_close_icon_using_mouse -> user_story_user_brows_user_closeuser_clicks_on_browser_close_icon;
+	user_story_user_brows_user_closeoperating_sytem_closes_web_browser	[label="operating sytem closes web browser"];
+	user_story_user_brows_user_closeuser_clicks_on_browser_close_icon -> user_story_user_brows_user_closeoperating_sytem_closes_web_browser;
+}

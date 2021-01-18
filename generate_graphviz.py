@@ -6,6 +6,8 @@ from pygraphviz import AGraph
 # https://pygraphviz.github.io/documentation/latest/reference/agraph.html
 import random
 from typing import Tuple
+from os import path
+
 
 # import the data structures from a separate file
 from browse_internet import list_of_task_dicts
@@ -111,6 +113,11 @@ def linked_layers(edge_list:list,list_of_task_dicts:list,parent_name:str) -> Non
     use_case = AGraph(directed=True)
     use_case.clear()
     use_case.graph_attr.update(compound="true")
+    # use_case.add_node("up",
+    #                   label="up",
+    #                   shape="rectangle",
+    #                   color="blue",
+    #                   href=parent_name+".svg")
 
     for edge_pair in edge_list:
         if task_has_children_in_list_of_task_dicts(edge_pair[0], list_of_task_dicts):
@@ -123,10 +130,13 @@ def linked_layers(edge_list:list,list_of_task_dicts:list,parent_name:str) -> Non
                                 label=with_spaces(sg_edge_pair[0]),
                                 shape="rectangle",
                                 color="blue",
-                                href="linked_layers_"+parent_name+"_"+smush(edge_pair[0])[:10]+".svg")
-                    linked_layers(get_subgraph(edge_pair[0],list_of_task_dicts),
-                                  list_of_task_dicts,
-                                  parent_name+"_"+smush(edge_pair[0])[:10])
+                                # name length is limited to 10 characters to
+                                # avoid file names that exceed OS limits.
+                                href=parent_name+"_"+smush(edge_pair[0])[:10]+".svg")
+                    if not path.exists(parent_name+"_"+smush(edge_pair[0])[:10]+".svg"):
+                        linked_layers(get_subgraph(edge_pair[0],list_of_task_dicts),
+                                      list_of_task_dicts,
+                                      parent_name+"_"+smush(edge_pair[0])[:10])
                 else:
                     sg.add_node(parent_name+smush(edge_pair[0])+smush(sg_edge_pair[0]),
                                 label=with_spaces(sg_edge_pair[0]))
@@ -136,15 +146,16 @@ def linked_layers(edge_list:list,list_of_task_dicts:list,parent_name:str) -> Non
                                     label=with_spaces(sg_edge_pair[1]),
                                     shape="rectangle",
                                     color="blue",
-                                    href="linked_layers_"+parent_name+"_"+smush(edge_pair[0])[:10]+".svg")
-                        linked_layers(get_subgraph(edge_pair[0],list_of_task_dicts),
-                                      list_of_task_dicts,
-                                      parent_name+"_"+smush(edge_pair[0])[:10])
+                                    href=parent_name+"_"+smush(edge_pair[0])[:10]+".svg")
+                        if not path.exists(parent_name+"_"+smush(edge_pair[0])[:10]+".svg"):
+                            linked_layers(get_subgraph(edge_pair[0],list_of_task_dicts),
+                                          list_of_task_dicts,
+                                          parent_name+"_"+smush(edge_pair[0])[:10])
                     else:
                         sg.add_node(parent_name+smush(edge_pair[0])+smush(sg_edge_pair[1]),
                                     label=with_spaces(sg_edge_pair[1]))
                     sg.add_edge(parent_name+smush(edge_pair[0])+smush(sg_edge_pair[0]),
-                                parent_name+smush(edge_pair[0])+smush(sg_edge_pair[1]),constraint=False)
+                                parent_name+smush(edge_pair[0])+smush(sg_edge_pair[1]))#,constraint=False)
         else: # node does not have children
             use_case.add_node(parent_name+smush(edge_pair[0]),
                               label=with_spaces(edge_pair[0]))
@@ -159,10 +170,11 @@ def linked_layers(edge_list:list,list_of_task_dicts:list,parent_name:str) -> Non
                                     label=with_spaces(sg_edge_pair[0]),
                                     shape="rectangle",
                                     color="blue",
-                                    href="linked_layers_"+parent_name+"_"+smush(edge_pair[1])[:10]+".svg")
-                        linked_layers(get_subgraph(edge_pair[1],list_of_task_dicts),
-                                      list_of_task_dicts,
-                                      parent_name+"_"+smush(edge_pair[1])[:10])
+                                    href=parent_name+"_"+smush(edge_pair[1])[:10]+".svg")
+                        if not path.exists(parent_name+"_"+smush(edge_pair[1])[:10]+".svg"):
+                            linked_layers(get_subgraph(edge_pair[1],list_of_task_dicts),
+                                          list_of_task_dicts,
+                                          parent_name+"_"+smush(edge_pair[1])[:10])
                     else:
                         sg.add_node(parent_name+smush(edge_pair[1])+smush(sg_edge_pair[0]),
                                     label=with_spaces(sg_edge_pair[0]))
@@ -172,22 +184,24 @@ def linked_layers(edge_list:list,list_of_task_dicts:list,parent_name:str) -> Non
                                         label=with_spaces(sg_edge_pair[1]),
                                         shape="rectangle",
                                         color="blue",
-                                        href="linked_layers_"+parent_name+"_"+smush(edge_pair[1])[:10]+".svg")
-                            linked_layers(get_subgraph(edge_pair[1],list_of_task_dicts),
-                                          list_of_task_dicts,
-                                          parent_name+"_"+smush(edge_pair[1])[:10])
+                                        href=parent_name+"_"+smush(edge_pair[1])[:10]+".svg")
+                            if not path.exists(parent_name+"_"+smush(edge_pair[1])[:10]+".svg"):
+                                linked_layers(get_subgraph(edge_pair[1],list_of_task_dicts),
+                                              list_of_task_dicts,
+                                              parent_name+"_"+smush(edge_pair[1])[:10])
                         else:
                             sg.add_node(parent_name+smush(edge_pair[1])+smush(sg_edge_pair[1]),
                                         label=with_spaces(sg_edge_pair[1]))
                         sg.add_edge(parent_name+smush(edge_pair[1])+smush(sg_edge_pair[0]),
-                                    parent_name+smush(edge_pair[1])+smush(sg_edge_pair[1]),constraint=False)
+                                    parent_name+smush(edge_pair[1])+smush(sg_edge_pair[1]))#,constraint=False)
             else: # node does not have children
                 use_case.add_node(parent_name+smush(edge_pair[1]),
                                   label=with_spaces(edge_pair[1]))
             use_case.add_edge(parent_name+smush(edge_pair[0]),
                               parent_name+smush(edge_pair[1]))
-    use_case.write("linked_layers_"+parent_name+".dot")
-    use_case.draw("linked_layers_"+parent_name+".svg", format="svg", prog="dot")
+    print("parent name =",parent_name)
+    use_case.write(parent_name+".dot")
+    use_case.draw(parent_name+".svg", format="svg", prog="dot")
 
     return
 

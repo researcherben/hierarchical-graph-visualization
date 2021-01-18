@@ -1,0 +1,24 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph "cluster_user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_\
+router" {
+		graph [label="operating system implements TCP connection to router"];
+		user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_router	[style=invis];
+		"user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerNIC_\
+sends_SYN_packet_to_router"	[color=blue,
+			href="user_story_user_brows_web_browse_web_browse_web_browse_operating__operating__operating_.svg",
+			label="NIC sends SYN packet to router",
+			shape=rectangle];
+		"user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerrouter_\
+sends_SYNACK_packet_to_NIC"	[label="router sends SYN-ACK packet to NIC"];
+		"user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerNIC_\
+sends_SYN_packet_to_router" -> "user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerrouter_\
+sends_SYNACK_packet_to_NIC";
+		"user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerNIC_\
+sends_ACK_packet_to_router"	[label="NIC sends ACK packet to router"];
+		"user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerrouter_\
+sends_SYNACK_packet_to_NIC" -> "user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_operating_system_implements_TCP_connection_to_routerNIC_\
+sends_ACK_packet_to_router";
+	}
+}

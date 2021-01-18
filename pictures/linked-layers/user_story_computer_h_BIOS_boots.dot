@@ -1,0 +1,18 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequence {
+		graph [label="BIOS loads boot sequence"];
+		user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequence	[style=invis];
+		user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequenceBIOS_boots_devices_directly_into_your_OSspecific_bootloader	[label="BIOS boots devices directly into your OS-specific bootloader"];
+		"user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequenceBIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_\
+an_MBR"	[label="BIOS boots devices (any hard disk, or anything 
+emulating a hard disk) into an MBR"];
+		user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequenceBIOS_boots_devices_directly_into_your_OSspecific_bootloader -> "user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequenceBIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_\
+an_MBR";
+	}
+	user_story_computer_h_BIOS_bootsBIOS_detects_RAM	[label="BIOS detects RAM"];
+	user_story_computer_h_BIOS_bootsBIOS_detects_hardware	[label="BIOS detects hardware"];
+	user_story_computer_h_BIOS_bootsBIOS_detects_RAM -> user_story_computer_h_BIOS_bootsBIOS_detects_hardware;
+	user_story_computer_h_BIOS_bootsBIOS_detects_hardware -> user_story_computer_h_BIOS_bootsBIOS_loads_boot_sequence;
+}

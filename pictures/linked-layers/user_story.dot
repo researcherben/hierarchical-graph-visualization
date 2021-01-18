@@ -1,0 +1,91 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_storyuser_turns_off_the_computer {
+		graph [label="user turns off the computer"];
+		user_storyuser_turns_off_the_computer	[style=invis];
+		user_storyuser_turns_off_the_computeruser_pushes_power_button	[label="user pushes power button"];
+		user_storyuser_turns_off_the_computerpower_button_short_circuits_wire	[label="power button short circuits wire"];
+		user_storyuser_turns_off_the_computeruser_pushes_power_button -> user_storyuser_turns_off_the_computerpower_button_short_circuits_wire;
+		user_storyuser_turns_off_the_computermotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+		user_storyuser_turns_off_the_computerpower_button_short_circuits_wire -> user_storyuser_turns_off_the_computermotherboard_does_something_to_CPU;
+		user_storyuser_turns_off_the_computeruser_selects_shutdown_menu_option_on_desktop	[label="user selects shutdown menu option on desktop"];
+		user_storyuser_turns_off_the_computeroperating_system_terminates_desktop	[label="operating system terminates desktop"];
+		user_storyuser_turns_off_the_computeruser_selects_shutdown_menu_option_on_desktop -> user_storyuser_turns_off_the_computeroperating_system_terminates_desktop;
+		user_storyuser_turns_off_the_computeruser_types_REISUB	[color=blue,
+			href="user_story_user_turns.svg",
+			label="user types REISUB",
+			shape=rectangle];
+	}
+	subgraph cluster_user_storycomputer_has_state_off {
+		graph [label="computer has state off"];
+		user_storycomputer_has_state_off	[style=invis];
+		user_storycomputer_has_state_offmotherboard_uses_power_from_battery	[label="motherboard uses power from battery"];
+	}
+	subgraph cluster_user_storycomputer_has_state_turning_on {
+		graph [label="computer has state turning on"];
+		user_storycomputer_has_state_turning_on	[style=invis];
+		user_storycomputer_has_state_turning_onpower_button_short_circuits_wire	[label="power button short circuits wire"];
+		user_storycomputer_has_state_turning_onmotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+		user_storycomputer_has_state_turning_onpower_button_short_circuits_wire -> user_storycomputer_has_state_turning_onmotherboard_does_something_to_CPU;
+		user_storycomputer_has_state_turning_onCPU_executes_BIOS_code_at_bottom_of_memory_map	[label="CPU executes BIOS code at bottom of memory map"];
+		user_storycomputer_has_state_turning_onmotherboard_does_something_to_CPU -> user_storycomputer_has_state_turning_onCPU_executes_BIOS_code_at_bottom_of_memory_map;
+		user_storycomputer_has_state_turning_onBIOS_boots_computer	[color=blue,
+			href="user_story_computer_h.svg",
+			label="BIOS boots computer",
+			shape=rectangle];
+		user_storycomputer_has_state_turning_onCPU_executes_BIOS_code_at_bottom_of_memory_map -> user_storycomputer_has_state_turning_onBIOS_boots_computer;
+		user_storycomputer_has_state_turning_onoperating_system_starts_desktop	[label="operating system starts desktop"];
+		user_storycomputer_has_state_turning_onBIOS_boots_computer -> user_storycomputer_has_state_turning_onoperating_system_starts_desktop;
+	}
+	subgraph cluster_user_storyuser_turns_on_computer {
+		graph [label="user turns on computer"];
+		user_storyuser_turns_on_computer	[style=invis];
+		user_storyuser_turns_on_computeruser_pushes_power_button	[label="user pushes power button"];
+		user_storyuser_turns_on_computerpower_button_short_circuits_wire	[label="power button short circuits wire"];
+		user_storyuser_turns_on_computeruser_pushes_power_button -> user_storyuser_turns_on_computerpower_button_short_circuits_wire;
+		user_storyuser_turns_on_computermotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+		user_storyuser_turns_on_computerpower_button_short_circuits_wire -> user_storyuser_turns_on_computermotherboard_does_something_to_CPU;
+	}
+	subgraph cluster_user_storycomputer_has_state_idle {
+		graph [label="computer has state idle"];
+		user_storycomputer_has_state_idle	[style=invis];
+		user_storycomputer_has_state_idleoperating_system_waiting_for_interrupt	[label="operating system waiting for interrupt"];
+	}
+	subgraph cluster_user_storyuser_browses_the_web {
+		graph [label="user browses the web"];
+		user_storyuser_browses_the_web	[style=invis];
+		user_storyuser_browses_the_webuser_opens_web_browser	[color=blue,
+			href="user_story_user_brows.svg",
+			label="user opens web browser",
+			shape=rectangle];
+		user_storyuser_browses_the_webuser_types_URL_of_website	[color=blue,
+			href="user_story_user_brows.svg",
+			label="user types URL of website",
+			shape=rectangle];
+		user_storyuser_browses_the_webuser_opens_web_browser -> user_storyuser_browses_the_webuser_types_URL_of_website;
+		user_storyuser_browses_the_webweb_browser_shows_webpage	[color=blue,
+			href="user_story_user_brows.svg",
+			label="web browser shows webpage",
+			shape=rectangle];
+		user_storyuser_browses_the_webuser_types_URL_of_website -> user_storyuser_browses_the_webweb_browser_shows_webpage;
+		user_storyuser_browses_the_webuser_reads_webpage	[label="user reads webpage"];
+		user_storyuser_browses_the_webweb_browser_shows_webpage -> user_storyuser_browses_the_webuser_reads_webpage;
+		user_storyuser_browses_the_webuser_clicks_on_link	[color=blue,
+			href="user_story_user_brows.svg",
+			label="user clicks on link",
+			shape=rectangle];
+		user_storyuser_browses_the_webuser_reads_webpage -> user_storyuser_browses_the_webuser_clicks_on_link;
+		user_storyuser_browses_the_webuser_closes_web_browser	[color=blue,
+			href="user_story_user_brows.svg",
+			label="user closes web browser",
+			shape=rectangle];
+		user_storyuser_browses_the_webuser_clicks_on_link -> user_storyuser_browses_the_webuser_closes_web_browser;
+	}
+	user_storycomputer_has_state_off -> user_storyuser_turns_on_computer;
+	user_storyuser_turns_on_computer -> user_storycomputer_has_state_turning_on;
+	user_storycomputer_has_state_turning_on -> user_storyuser_browses_the_web;
+	user_storyuser_browses_the_web -> user_storycomputer_has_state_idle;
+	user_storycomputer_has_state_idle -> user_storyuser_turns_off_the_computer;
+	user_storyuser_turns_off_the_computer -> user_storycomputer_has_state_off;
+}

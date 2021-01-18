@@ -1,0 +1,25 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_user_turnsuser_types_REISUB {
+		graph [label="user types REISUB"];
+		user_story_user_turnsuser_types_REISUB	[style=invis];
+		user_story_user_turnsuser_types_REISUBkeyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+		user_story_user_turnsuser_types_REISUBmechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+		user_story_user_turnsuser_types_REISUBkeyboard_key_presses_mechanical_switch -> user_story_user_turnsuser_types_REISUBmechanical_switch_shorts_electrical_circuit;
+		user_story_user_turnsuser_types_REISUBkeyboard_hardware_sends_signal_across_USB_cable	[label="keyboard hardware sends signal across USB cable"];
+		user_story_user_turnsuser_types_REISUBmechanical_switch_shorts_electrical_circuit -> user_story_user_turnsuser_types_REISUBkeyboard_hardware_sends_signal_across_USB_cable;
+		user_story_user_turnsuser_types_REISUBoperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+		user_story_user_turnsuser_types_REISUBkeyboard_hardware_sends_signal_across_USB_cable -> user_story_user_turnsuser_types_REISUBoperating_system_translates_signal_from_USB_cable;
+		user_story_user_turnsuser_types_REISUBoperating_system_sends_key_to_infocus_application	[label="operating system sends key to in-focus application"];
+		user_story_user_turnsuser_types_REISUBoperating_system_translates_signal_from_USB_cable -> user_story_user_turnsuser_types_REISUBoperating_system_sends_key_to_infocus_application;
+	}
+	user_story_user_turnsuser_pushes_power_button	[label="user pushes power button"];
+	user_story_user_turnspower_button_short_circuits_wire	[label="power button short circuits wire"];
+	user_story_user_turnsuser_pushes_power_button -> user_story_user_turnspower_button_short_circuits_wire;
+	user_story_user_turnsmotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+	user_story_user_turnspower_button_short_circuits_wire -> user_story_user_turnsmotherboard_does_something_to_CPU;
+	user_story_user_turnsuser_selects_shutdown_menu_option_on_desktop	[label="user selects shutdown menu option on desktop"];
+	user_story_user_turnsoperating_system_terminates_desktop	[label="operating system terminates desktop"];
+	user_story_user_turnsuser_selects_shutdown_menu_option_on_desktop -> user_story_user_turnsoperating_system_terminates_desktop;
+}

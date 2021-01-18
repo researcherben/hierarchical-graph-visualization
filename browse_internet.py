@@ -8,7 +8,13 @@ def user_types_on_keyboard():
     """everytime the user uses the keyboard, this graph is implemented"""
     return [
       (("keyboard key","presses","mechanical switch"),
-       ("mechanical switch","shorts","electrical circuit"))
+       ("mechanical switch","shorts","electrical circuit")),
+      (("mechanical switch","shorts","electrical circuit"),
+       ("keyboard hardware","sends signal across","USB cable")),
+      (("keyboard hardware","sends signal across","USB cable"),
+       ("operating system","translates signal from","USB cable")),
+      (("operating system","translates signal from","USB cable"),
+       ("operating system","sends key","to in-focus application"))
     ]
 
 def user_moves_mouse():

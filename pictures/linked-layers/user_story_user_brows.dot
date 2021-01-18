@@ -1,0 +1,110 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_user_browsuser_types_URL_of_website {
+		graph [label="user types URL of website"];
+		user_story_user_browsuser_types_URL_of_website	[style=invis];
+		user_story_user_browsuser_types_URL_of_websitekeyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+		user_story_user_browsuser_types_URL_of_websitemechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+		user_story_user_browsuser_types_URL_of_websitekeyboard_key_presses_mechanical_switch -> user_story_user_browsuser_types_URL_of_websitemechanical_switch_shorts_electrical_circuit;
+		user_story_user_browsuser_types_URL_of_websitekeyboard_hardware_sends_signal_across_USB_cable	[label="keyboard hardware sends signal across USB cable"];
+		user_story_user_browsuser_types_URL_of_websitemechanical_switch_shorts_electrical_circuit -> user_story_user_browsuser_types_URL_of_websitekeyboard_hardware_sends_signal_across_USB_cable;
+		user_story_user_browsuser_types_URL_of_websiteoperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+		user_story_user_browsuser_types_URL_of_websitekeyboard_hardware_sends_signal_across_USB_cable -> user_story_user_browsuser_types_URL_of_websiteoperating_system_translates_signal_from_USB_cable;
+		user_story_user_browsuser_types_URL_of_websiteoperating_system_sends_key_to_infocus_application	[label="operating system sends key to in-focus application"];
+		user_story_user_browsuser_types_URL_of_websiteoperating_system_translates_signal_from_USB_cable -> user_story_user_browsuser_types_URL_of_websiteoperating_system_sends_key_to_infocus_application;
+	}
+	subgraph cluster_user_story_user_browsweb_browser_shows_webpage {
+		graph [label="web browser shows webpage"];
+		user_story_user_browsweb_browser_shows_webpage	[style=invis];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_separate_path_from_domain_name_from_protocol	[label="web browser separate path from domain name from protocol"];
+		"user_story_user_browsweb_browser_shows_webpageweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_\
+address_of_URL"	[color=blue,
+			href="user_story_user_brows_web_browse.svg",
+			label="web browser browser checks the cache for a DNS record 
+to find the corresponding IP address of URL",
+			shape=rectangle];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_separate_path_from_domain_name_from_protocol -> "user_story_user_browsweb_browser_shows_webpageweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_\
+address_of_URL";
+		user_story_user_browsweb_browser_shows_webpageweb_browser_initiates_TCP_connection_with_the_remote_server	[label="web browser initiates TCP connection with the remote server"];
+		"user_story_user_browsweb_browser_shows_webpageweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_\
+address_of_URL" -> user_story_user_browsweb_browser_shows_webpageweb_browser_initiates_TCP_connection_with_the_remote_server;
+		user_story_user_browsweb_browser_shows_webpageweb_browser_sends_an_HTTP_request_to_the_remote_server	[label="web browser sends an HTTP request to the remote server"];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_initiates_TCP_connection_with_the_remote_server -> user_story_user_browsweb_browser_shows_webpageweb_browser_sends_an_HTTP_request_to_the_remote_server;
+		user_story_user_browsweb_browser_shows_webpageserver_handles_the_request	[label="server handles the request"];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_sends_an_HTTP_request_to_the_remote_server -> user_story_user_browsweb_browser_shows_webpageserver_handles_the_request;
+		user_story_user_browsweb_browser_shows_webpageserver_sends_back_an_HTTP_response	[label="server sends back an HTTP response"];
+		user_story_user_browsweb_browser_shows_webpageserver_handles_the_request -> user_story_user_browsweb_browser_shows_webpageserver_sends_back_an_HTTP_response;
+		user_story_user_browsweb_browser_shows_webpageweb_browser_renders_the_HTML_content	[color=blue,
+			href="user_story_user_brows_web_browse.svg",
+			label="web browser renders the HTML content",
+			shape=rectangle];
+		user_story_user_browsweb_browser_shows_webpageserver_sends_back_an_HTTP_response -> user_story_user_browsweb_browser_shows_webpageweb_browser_renders_the_HTML_content;
+		"user_story_user_browsweb_browser_shows_webpageweb_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_\
+images_javascript"	[label="web browser sends additional requests for objects embedded in 
+the html file - CSS files, images, javascript"];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_renders_the_HTML_content -> "user_story_user_browsweb_browser_shows_webpageweb_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_\
+images_javascript";
+		user_story_user_browsweb_browser_shows_webpageserver_sends_back_additional_content	[label="server sends back additional content"];
+		"user_story_user_browsweb_browser_shows_webpageweb_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_\
+images_javascript" -> user_story_user_browsweb_browser_shows_webpageserver_sends_back_additional_content;
+		user_story_user_browsweb_browser_shows_webpageweb_browser_process_CSS_markup_and_build_the_CSSOM_tree	[label="web browser process CSS markup and build the CSSOM tree"];
+		user_story_user_browsweb_browser_shows_webpageserver_sends_back_additional_content -> user_story_user_browsweb_browser_shows_webpageweb_browser_process_CSS_markup_and_build_the_CSSOM_tree;
+		user_story_user_browsweb_browser_shows_webpageweb_browser_combine_the_DOM_and_CSSOM_into_a_render_tree	[label="web browser combine the DOM and CSSOM into a render tree"];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_process_CSS_markup_and_build_the_CSSOM_tree -> user_story_user_browsweb_browser_shows_webpageweb_browser_combine_the_DOM_and_CSSOM_into_a_render_tree;
+		"user_story_user_browsweb_browser_shows_webpageweb_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_\
+aka_layout_aka_reflow"	[label="web browser run the layout on the render tree to compute 
+the geometry of each node aka layout  aka reflow"];
+		user_story_user_browsweb_browser_shows_webpageweb_browser_combine_the_DOM_and_CSSOM_into_a_render_tree -> "user_story_user_browsweb_browser_shows_webpageweb_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_\
+aka_layout_aka_reflow";
+		user_story_user_browsweb_browser_shows_webpageweb_browser_paint_the_individual_nodes_to_the_screen	[label="web browser paint the individual nodes to the screen"];
+		"user_story_user_browsweb_browser_shows_webpageweb_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_\
+aka_layout_aka_reflow" -> user_story_user_browsweb_browser_shows_webpageweb_browser_paint_the_individual_nodes_to_the_screen;
+	}
+	subgraph cluster_user_story_user_browsuser_clicks_on_link {
+		graph [label="user clicks on link"];
+		user_story_user_browsuser_clicks_on_link	[style=invis];
+		user_story_user_browsuser_clicks_on_linkmouse_hardware_depress_mechanical_switch	[label="mouse hardware depress mechanical switch"];
+		user_story_user_browsuser_clicks_on_linkmouse_hardware_sends_signal_across_USB_cable	[label="mouse hardware sends signal across USB cable"];
+		user_story_user_browsuser_clicks_on_linkmouse_hardware_depress_mechanical_switch -> user_story_user_browsuser_clicks_on_linkmouse_hardware_sends_signal_across_USB_cable;
+		user_story_user_browsuser_clicks_on_linkoperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+		user_story_user_browsuser_clicks_on_linkmouse_hardware_sends_signal_across_USB_cable -> user_story_user_browsuser_clicks_on_linkoperating_system_translates_signal_from_USB_cable;
+		user_story_user_browsuser_clicks_on_linkoperating_system_acts_on_desktop_icon	[label="operating system acts on desktop icon"];
+		user_story_user_browsuser_clicks_on_linkoperating_system_translates_signal_from_USB_cable -> user_story_user_browsuser_clicks_on_linkoperating_system_acts_on_desktop_icon;
+	}
+	subgraph cluster_user_story_user_browsuser_closes_web_browser {
+		graph [label="user closes web browser"];
+		user_story_user_browsuser_closes_web_browser	[style=invis];
+		user_story_user_browsuser_closes_web_browseruser_types_altf4	[color=blue,
+			href="user_story_user_brows_user_close.svg",
+			label="user types alt-f4",
+			shape=rectangle];
+		user_story_user_browsuser_closes_web_browseruser_moves_pointer_on_desktop_to_browser_close_icon_using_mouse	[label="user moves pointer on desktop to 
+browser close icon using mouse"];
+		user_story_user_browsuser_closes_web_browseruser_clicks_on_browser_close_icon	[label="user clicks on browser close icon"];
+		user_story_user_browsuser_closes_web_browseruser_moves_pointer_on_desktop_to_browser_close_icon_using_mouse -> user_story_user_browsuser_closes_web_browseruser_clicks_on_browser_close_icon;
+		user_story_user_browsuser_closes_web_browseroperating_sytem_closes_web_browser	[label="operating sytem closes web browser"];
+		user_story_user_browsuser_closes_web_browseruser_clicks_on_browser_close_icon -> user_story_user_browsuser_closes_web_browseroperating_sytem_closes_web_browser;
+	}
+	subgraph cluster_user_story_user_browsuser_opens_web_browser {
+		graph [label="user opens web browser"];
+		user_story_user_browsuser_opens_web_browser	[style=invis];
+		user_story_user_browsuser_opens_web_browseruser_moves_pointer_on_desktop_to_browser_icon_using_mouse	[color=blue,
+			href="user_story_user_brows_user_opens.svg",
+			label="user moves pointer on desktop to browser icon using mouse",
+			shape=rectangle];
+		user_story_user_browsuser_opens_web_browseruser_clicks_on_desktop_browser_icon	[color=blue,
+			href="user_story_user_brows_user_opens.svg",
+			label="user clicks on desktop browser icon",
+			shape=rectangle];
+		user_story_user_browsuser_opens_web_browseruser_moves_pointer_on_desktop_to_browser_icon_using_mouse -> user_story_user_browsuser_opens_web_browseruser_clicks_on_desktop_browser_icon;
+		user_story_user_browsuser_opens_web_browseroperating_sytem_launches_web_browser	[label="operating sytem launches web browser"];
+		user_story_user_browsuser_opens_web_browseruser_clicks_on_desktop_browser_icon -> user_story_user_browsuser_opens_web_browseroperating_sytem_launches_web_browser;
+	}
+	user_story_user_browsuser_opens_web_browser -> user_story_user_browsuser_types_URL_of_website;
+	user_story_user_browsuser_types_URL_of_website -> user_story_user_browsweb_browser_shows_webpage;
+	user_story_user_browsuser_reads_webpage	[label="user reads webpage"];
+	user_story_user_browsweb_browser_shows_webpage -> user_story_user_browsuser_reads_webpage;
+	user_story_user_browsuser_reads_webpage -> user_story_user_browsuser_clicks_on_link;
+	user_story_user_browsuser_clicks_on_link -> user_story_user_browsuser_closes_web_browser;
+}

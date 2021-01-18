@@ -1,0 +1,284 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_u_s_e_r__s_t_o_r_ycomputer_has_state_off {
+		graph [label="computer has state off"];
+		u_s_e_r__s_t_o_r_ycomputer_has_state_off	[style=invis];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__o_f_fmotherboard_uses_power_from_battery	[label="motherboard uses power from battery"];
+	}
+	subgraph cluster_u_s_e_r__s_t_o_r_ycomputer_has_state_turning_on {
+		graph [label="computer has state turning on"];
+		subgraph cluster_c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nBIOS_boots_computer {
+			graph [label="BIOS boots computer"];
+			subgraph cluster_B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_loads_boot_sequence {
+				graph [label="BIOS loads boot sequence"];
+				B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_loads_boot_sequence	[style=invis];
+				B_I_O_S__l_o_a_d_s__b_o_o_t__s_e_q_u_e_n_c_eBIOS_boots_devices_directly_into_your_OSspecific_bootloader	[label="BIOS boots devices directly into your OS-specific bootloader"];
+				B_I_O_S__l_o_a_d_s__b_o_o_t__s_e_q_u_e_n_c_eBIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR	[label="BIOS boots devices (any hard disk, or anything 
+emulating a hard disk) into an MBR"];
+				B_I_O_S__l_o_a_d_s__b_o_o_t__s_e_q_u_e_n_c_eBIOS_boots_devices_directly_into_your_OSspecific_bootloader -> B_I_O_S__l_o_a_d_s__b_o_o_t__s_e_q_u_e_n_c_eBIOS_boots_devices_any_hard_disk_or_anything_emulating_a_hard_disk_into_an_MBR;
+			}
+			c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nBIOS_boots_computer	[style=invis];
+			B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_detects_RAM	[label="BIOS detects RAM"];
+			B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_detects_hardware	[label="BIOS detects hardware"];
+			B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_detects_RAM -> B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_detects_hardware;
+			B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_detects_hardware -> B_I_O_S__b_o_o_t_s__c_o_m_p_u_t_e_rBIOS_loads_boot_sequence;
+		}
+		u_s_e_r__s_t_o_r_ycomputer_has_state_turning_on	[style=invis];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_npower_button_short_circuits_wire	[label="power button short circuits wire"];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nmotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_npower_button_short_circuits_wire -> c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nmotherboard_does_something_to_CPU;
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nCPU_executes_BIOS_code_at_bottom_of_memory_map	[label="CPU executes BIOS code at bottom of memory map"];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nmotherboard_does_something_to_CPU -> c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nCPU_executes_BIOS_code_at_bottom_of_memory_map;
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nCPU_executes_BIOS_code_at_bottom_of_memory_map -> c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nBIOS_boots_computer;
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_noperating_system_starts_desktop	[label="operating system starts desktop"];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_nBIOS_boots_computer -> c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__t_u_r_n_i_n_g__o_noperating_system_starts_desktop;
+	}
+	subgraph cluster_u_s_e_r__s_t_o_r_yuser_turns_on_computer {
+		graph [label="user turns on computer"];
+		u_s_e_r__s_t_o_r_yuser_turns_on_computer	[style=invis];
+		u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_ruser_pushes_power_button	[label="user pushes power button"];
+		u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_rpower_button_short_circuits_wire	[label="power button short circuits wire"];
+		u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_ruser_pushes_power_button -> u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_rpower_button_short_circuits_wire;
+		u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_rmotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+		u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_rpower_button_short_circuits_wire -> u_s_e_r__t_u_r_n_s__o_n__c_o_m_p_u_t_e_rmotherboard_does_something_to_CPU;
+	}
+	subgraph cluster_u_s_e_r__s_t_o_r_yuser_browses_the_web {
+		graph [label="user browses the web"];
+		subgraph cluster_u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_opens_web_browser {
+			graph [label="user opens web browser"];
+			subgraph cluster_u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_moves_pointer_on_desktop_to_browser_icon_using_mouse {
+				graph [label="user moves pointer on desktop to browser icon using mouse"];
+				u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_moves_pointer_on_desktop_to_browser_icon_using_mouse	[style=invis];
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_moves_across_\
+surface"	[label="mouse hardware moves across surface"];
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_light_sensor_\
+detects_movement_using_light"	[label="mouse hardware light sensor detects movement using light"];
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_moves_across_\
+surface" -> "u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_light_sensor_\
+detects_movement_using_light";
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_sends_signal_\
+across_USB_cable"	[label="mouse hardware sends signal across USB cable"];
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_light_sensor_\
+detects_movement_using_light" -> "u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_sends_signal_\
+across_USB_cable";
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_eoperating_system_translates_\
+signal_from_USB_cable"	[label="operating system translates signal from USB cable"];
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_emouse_hardware_sends_signal_\
+across_USB_cable" -> "u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_eoperating_system_translates_\
+signal_from_USB_cable";
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_eoperating_system_moves_pointer_\
+on_computer_screen"	[label="operating system moves pointer on computer screen"];
+				"u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_eoperating_system_translates_\
+signal_from_USB_cable" -> "u_s_e_r__m_o_v_e_s__p_o_i_n_t_e_r__o_n__d_e_s_k_t_o_p__t_o__b_r_o_w_s_e_r__i_c_o_n__u_s_i_n_g__m_o_u_s_eoperating_system_moves_pointer_\
+on_computer_screen";
+			}
+			subgraph cluster_u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_desktop_browser_icon {
+				graph [label="user clicks on desktop browser icon"];
+				u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_desktop_browser_icon	[style=invis];
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_nmouse_hardware_depress_mechanical_switch	[label="mouse hardware depress mechanical switch"];
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_nmouse_hardware_sends_signal_across_USB_cable	[label="mouse hardware sends signal across USB cable"];
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_nmouse_hardware_depress_mechanical_switch -> u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_nmouse_hardware_sends_signal_across_USB_cable;
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_noperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_nmouse_hardware_sends_signal_across_USB_cable -> u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_noperating_system_translates_signal_from_USB_cable;
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_noperating_system_acts_on_desktop_icon	[label="operating system acts on desktop icon"];
+				u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_noperating_system_translates_signal_from_USB_cable -> u_s_e_r__c_l_i_c_k_s__o_n__d_e_s_k_t_o_p__b_r_o_w_s_e_r__i_c_o_noperating_system_acts_on_desktop_icon;
+			}
+			u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_opens_web_browser	[style=invis];
+			u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_moves_pointer_on_desktop_to_browser_icon_using_mouse -> u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_desktop_browser_icon;
+			u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_roperating_sytem_launches_web_browser	[label="operating sytem launches web browser"];
+			u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_desktop_browser_icon -> u_s_e_r__o_p_e_n_s__w_e_b__b_r_o_w_s_e_roperating_sytem_launches_web_browser;
+		}
+		subgraph cluster_u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_types_URL_of_website {
+			graph [label="user types URL of website"];
+			u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_types_URL_of_website	[style=invis];
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_ekeyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_emechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_ekeyboard_key_presses_mechanical_switch -> u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_emechanical_switch_shorts_electrical_circuit;
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_ekeyboard_hardware_sends_signal_across_USB_cable	[label="keyboard hardware sends signal across USB cable"];
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_emechanical_switch_shorts_electrical_circuit -> u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_ekeyboard_hardware_sends_signal_across_USB_cable;
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_eoperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_ekeyboard_hardware_sends_signal_across_USB_cable -> u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_eoperating_system_translates_signal_from_USB_cable;
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_eoperating_system_sends_key_to_infocus_application	[label="operating system sends key to in-focus application"];
+			u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_eoperating_system_translates_signal_from_USB_cable -> u_s_e_r__t_y_p_e_s__U_R_L__o_f__w_e_b_s_i_t_eoperating_system_sends_key_to_infocus_application;
+		}
+		subgraph cluster_u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_bweb_browser_shows_webpage {
+			graph [label="web browser shows webpage"];
+			subgraph "cluster_w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_\
+IP_address_of_URL" {
+				graph [label="web browser browser checks the cache for a DNS record 
+to find the corresponding IP address of URL"];
+				subgraph "cluster_w_e_b__b_r_o_w_s_e_r__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__c_a_c_h_e__f_o_r__a__D_N_S__r_e_c_o_r_d__t_o__f_i_n_d__t_h_e__c_\
+o_r_r_e_s_p_o_n_d_i_n_g__I_P__a_d_d_r_e_s_s__o_f__U_R_Lweb_browser_checks_the_operating_system_cache" {
+					graph [label="web browser checks the operating system cache"];
+					subgraph cluster_w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eoperating_system_checks_the_router_cache {
+						graph [label="operating system checks the router cache"];
+						subgraph cluster_o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_eoperating_system_sends_request_to_router {
+							graph [label="operating system sends request to router"];
+							subgraph "cluster_o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__s_e_n_d_s__r_e_q_u_e_s_t__t_o__r_o_u_t_e_roperating_system_implements_TCP_connection_to_\
+router" {
+								graph [label="operating system implements TCP connection to router"];
+								subgraph "cluster_o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rNIC_sends_SYN_packet_to_\
+router" {
+									graph [label="NIC sends SYN packet to router"];
+									subgraph cluster_N_I_C__s_e_n_d_s__S_Y_N__p_a_c_k_e_t__t_o__r_o_u_t_e_rNIC_sends_IP_dataframe_to_router_NIC {
+										graph [label="NIC sends IP dataframe to router NIC"];
+										subgraph cluster_N_I_C__s_e_n_d_s__I_P__d_a_t_a_f_r_a_m_e__t_o__r_o_u_t_e_r__N_I_CNIC_firmware_sends_signal_to_ethernet {
+											graph [label="NIC firmware sends signal to ethernet"];
+											N_I_C__s_e_n_d_s__I_P__d_a_t_a_f_r_a_m_e__t_o__r_o_u_t_e_r__N_I_CNIC_firmware_sends_signal_to_ethernet	[style=invis];
+											N_I_C__f_i_r_m_w_a_r_e__s_e_n_d_s__s_i_g_n_a_l__t_o__e_t_h_e_r_n_e_tNIC_hardware_sends_electrical_signal_to_wire	[label="NIC hardware sends electrical signal to wire"];
+										}
+										N_I_C__s_e_n_d_s__S_Y_N__p_a_c_k_e_t__t_o__r_o_u_t_e_rNIC_sends_IP_dataframe_to_router_NIC	[style=invis];
+									}
+									o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rNIC_sends_SYN_packet_to_router	[style=invis];
+									N_I_C__s_e_n_d_s__S_Y_N__p_a_c_k_e_t__t_o__r_o_u_t_e_rNIC_creates_IP_dataframe	[label="NIC creates IP dataframe"];
+									N_I_C__s_e_n_d_s__S_Y_N__p_a_c_k_e_t__t_o__r_o_u_t_e_rNIC_creates_IP_dataframe -> N_I_C__s_e_n_d_s__S_Y_N__p_a_c_k_e_t__t_o__r_o_u_t_e_rNIC_sends_IP_dataframe_to_router_NIC;
+								}
+								o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__s_e_n_d_s__r_e_q_u_e_s_t__t_o__r_o_u_t_e_roperating_system_implements_TCP_connection_to_router	[style=invis];
+								o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rrouter_sends_SYNACK_packet_to_NIC	[label="router sends SYN-ACK packet to NIC"];
+								o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rNIC_sends_SYN_packet_to_router -> o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rrouter_sends_SYNACK_packet_to_NIC;
+								o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rNIC_sends_ACK_packet_to_router	[label="NIC sends ACK packet to router"];
+								o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rrouter_sends_SYNACK_packet_to_NIC -> o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__i_m_p_l_e_m_e_n_t_s__T_C_P__c_o_n_n_e_c_t_i_o_n__t_o__r_o_u_t_e_rNIC_sends_ACK_packet_to_router;
+							}
+							o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_eoperating_system_sends_request_to_router	[style=invis];
+						}
+						w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eoperating_system_checks_the_router_cache	[style=invis];
+						o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_erouter_checks_local_cache_on_router	[label="router checks local cache on router"];
+						o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_eoperating_system_sends_request_to_router -> o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_erouter_checks_local_cache_on_router;
+						o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_erouter_checks_the_ISP_cache	[label="router checks the ISP cache"];
+						o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_erouter_checks_local_cache_on_router -> o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_h_e_c_k_s__t_h_e__r_o_u_t_e_r__c_a_c_h_erouter_checks_the_ISP_cache;
+					}
+					"w_e_b__b_r_o_w_s_e_r__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__c_a_c_h_e__f_o_r__a__D_N_S__r_e_c_o_r_d__t_o__f_i_n_d__t_h_e__c_o_r_r_e_\
+s_p_o_n_d_i_n_g__I_P__a_d_d_r_e_s_s__o_f__U_R_Lweb_browser_checks_the_operating_system_cache"	[style=invis];
+					w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eweb_browser_make_a_system_call_to_operating_system	[label="web browser make a system call to operating system"];
+					w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eoperating_system_checks_the_local_cache_in_OS	[label="operating system checks the local cache in OS"];
+					w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eweb_browser_make_a_system_call_to_operating_system -> w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eoperating_system_checks_the_local_cache_in_OS;
+					w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eoperating_system_checks_the_local_cache_in_OS -> w_e_b__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__o_p_e_r_a_t_i_n_g__s_y_s_t_e_m__c_a_c_h_eoperating_system_checks_the_router_cache;
+				}
+				"w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_\
+address_of_URL"	[style=invis];
+				"w_e_b__b_r_o_w_s_e_r__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__c_a_c_h_e__f_o_r__a__D_N_S__r_e_c_o_r_d__t_o__f_i_n_d__t_h_e__c_o_r_r_e_\
+s_p_o_n_d_i_n_g__I_P__a_d_d_r_e_s_s__o_f__U_R_Lweb_browser_checks_the_browsers_inmemory_cache"	[label="web browser checks the browser's in-memory cache"];
+				"w_e_b__b_r_o_w_s_e_r__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__c_a_c_h_e__f_o_r__a__D_N_S__r_e_c_o_r_d__t_o__f_i_n_d__t_h_e__c_o_r_r_e_\
+s_p_o_n_d_i_n_g__I_P__a_d_d_r_e_s_s__o_f__U_R_Lweb_browser_checks_the_browsers_inmemory_cache" -> "w_e_b__b_r_o_w_s_e_r__b_r_o_w_s_e_r__c_h_e_c_k_s__t_h_e__c_a_c_h_e__f_o_r__a__D_N_S__r_e_c_o_r_d__t_o__f_i_n_d__t_h_e__c_o_r_r_e_\
+s_p_o_n_d_i_n_g__I_P__a_d_d_r_e_s_s__o_f__U_R_Lweb_browser_checks_the_operating_system_cache";
+			}
+			subgraph cluster_w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_renders_the_HTML_content {
+				graph [label="web browser renders the HTML content"];
+				w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_renders_the_HTML_content	[style=invis];
+				w_e_b__b_r_o_w_s_e_r__r_e_n_d_e_r_s__t_h_e__H_T_M_L__c_o_n_t_e_n_tweb_browser_creates_DOM_tree	[label="web browser creates DOM tree"];
+			}
+			u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_bweb_browser_shows_webpage	[style=invis];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_separate_path_from_domain_name_from_protocol	[label="web browser separate path from domain name from protocol"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_separate_path_from_domain_name_from_protocol -> "w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_\
+address_of_URL";
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_initiates_TCP_connection_with_the_remote_server	[label="web browser initiates TCP connection with the remote server"];
+			"w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_browser_checks_the_cache_for_a_DNS_record_to_find_the_corresponding_IP_\
+address_of_URL" -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_initiates_TCP_connection_with_the_remote_server;
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_sends_an_HTTP_request_to_the_remote_server	[label="web browser sends an HTTP request to the remote server"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_initiates_TCP_connection_with_the_remote_server -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_sends_an_HTTP_request_to_the_remote_server;
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_handles_the_request	[label="server handles the request"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_sends_an_HTTP_request_to_the_remote_server -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_handles_the_request;
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_sends_back_an_HTTP_response	[label="server sends back an HTTP response"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_handles_the_request -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_sends_back_an_HTTP_response;
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_sends_back_an_HTTP_response -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_renders_the_HTML_content;
+			"w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_\
+images_javascript"	[label="web browser sends additional requests for objects embedded in 
+the html file - CSS files, images, javascript"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_renders_the_HTML_content -> "w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_\
+images_javascript";
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_sends_back_additional_content	[label="server sends back additional content"];
+			"w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_sends_additional_requests_for_objects_embedded_in_the_html_file_CSS_files_\
+images_javascript" -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_sends_back_additional_content;
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_process_CSS_markup_and_build_the_CSSOM_tree	[label="web browser process CSS markup and build the CSSOM tree"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eserver_sends_back_additional_content -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_process_CSS_markup_and_build_the_CSSOM_tree;
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_combine_the_DOM_and_CSSOM_into_a_render_tree	[label="web browser combine the DOM and CSSOM into a render tree"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_process_CSS_markup_and_build_the_CSSOM_tree -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_combine_the_DOM_and_CSSOM_into_a_render_tree;
+			"w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_\
+aka_layout_aka_reflow"	[label="web browser run the layout on the render tree to compute 
+the geometry of each node aka layout  aka reflow"];
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_combine_the_DOM_and_CSSOM_into_a_render_tree -> "w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_\
+aka_layout_aka_reflow";
+			w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_paint_the_individual_nodes_to_the_screen	[label="web browser paint the individual nodes to the screen"];
+			"w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_run_the_layout_on_the_render_tree_to_compute_the_geometry_of_each_node_\
+aka_layout_aka_reflow" -> w_e_b__b_r_o_w_s_e_r__s_h_o_w_s__w_e_b_p_a_g_eweb_browser_paint_the_individual_nodes_to_the_screen;
+		}
+		subgraph cluster_u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_clicks_on_link {
+			graph [label="user clicks on link"];
+			u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_clicks_on_link	[style=invis];
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_kmouse_hardware_depress_mechanical_switch	[label="mouse hardware depress mechanical switch"];
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_kmouse_hardware_sends_signal_across_USB_cable	[label="mouse hardware sends signal across USB cable"];
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_kmouse_hardware_depress_mechanical_switch -> u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_kmouse_hardware_sends_signal_across_USB_cable;
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_koperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_kmouse_hardware_sends_signal_across_USB_cable -> u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_koperating_system_translates_signal_from_USB_cable;
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_koperating_system_acts_on_desktop_icon	[label="operating system acts on desktop icon"];
+			u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_koperating_system_translates_signal_from_USB_cable -> u_s_e_r__c_l_i_c_k_s__o_n__l_i_n_koperating_system_acts_on_desktop_icon;
+		}
+		subgraph cluster_u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_closes_web_browser {
+			graph [label="user closes web browser"];
+			subgraph cluster_u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_types_altf4 {
+				graph [label="user types alt-f4"];
+				u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_types_altf4	[style=invis];
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4keyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4mechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4keyboard_key_presses_mechanical_switch -> u_s_e_r__t_y_p_e_s__a_l_t_f_4mechanical_switch_shorts_electrical_circuit;
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4keyboard_hardware_sends_signal_across_USB_cable	[label="keyboard hardware sends signal across USB cable"];
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4mechanical_switch_shorts_electrical_circuit -> u_s_e_r__t_y_p_e_s__a_l_t_f_4keyboard_hardware_sends_signal_across_USB_cable;
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4operating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4keyboard_hardware_sends_signal_across_USB_cable -> u_s_e_r__t_y_p_e_s__a_l_t_f_4operating_system_translates_signal_from_USB_cable;
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4operating_system_sends_key_to_infocus_application	[label="operating system sends key to in-focus application"];
+				u_s_e_r__t_y_p_e_s__a_l_t_f_4operating_system_translates_signal_from_USB_cable -> u_s_e_r__t_y_p_e_s__a_l_t_f_4operating_system_sends_key_to_infocus_application;
+			}
+			u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_closes_web_browser	[style=invis];
+			u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_moves_pointer_on_desktop_to_browser_close_icon_using_mouse	[label="user moves pointer on desktop to 
+browser close icon using mouse"];
+			u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_browser_close_icon	[label="user clicks on browser close icon"];
+			u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_moves_pointer_on_desktop_to_browser_close_icon_using_mouse -> u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_browser_close_icon;
+			u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_roperating_sytem_closes_web_browser	[label="operating sytem closes web browser"];
+			u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_ruser_clicks_on_browser_close_icon -> u_s_e_r__c_l_o_s_e_s__w_e_b__b_r_o_w_s_e_roperating_sytem_closes_web_browser;
+		}
+		u_s_e_r__s_t_o_r_yuser_browses_the_web	[style=invis];
+		u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_opens_web_browser -> u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_types_URL_of_website;
+		u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_types_URL_of_website -> u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_bweb_browser_shows_webpage;
+		u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_reads_webpage	[label="user reads webpage"];
+		u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_bweb_browser_shows_webpage -> u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_reads_webpage;
+		u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_reads_webpage -> u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_clicks_on_link;
+		u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_clicks_on_link -> u_s_e_r__b_r_o_w_s_e_s__t_h_e__w_e_buser_closes_web_browser;
+	}
+	subgraph cluster_u_s_e_r__s_t_o_r_ycomputer_has_state_idle {
+		graph [label="computer has state idle"];
+		u_s_e_r__s_t_o_r_ycomputer_has_state_idle	[style=invis];
+		c_o_m_p_u_t_e_r__h_a_s__s_t_a_t_e__i_d_l_eoperating_system_waiting_for_interrupt	[label="operating system waiting for interrupt"];
+	}
+	subgraph cluster_u_s_e_r__s_t_o_r_yuser_turns_off_the_computer {
+		graph [label="user turns off the computer"];
+		subgraph cluster_u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_ruser_types_REISUB {
+			graph [label="user types REISUB"];
+			u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_ruser_types_REISUB	[style=invis];
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bkeyboard_key_presses_mechanical_switch	[label="keyboard key presses mechanical switch"];
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bmechanical_switch_shorts_electrical_circuit	[label="mechanical switch shorts electrical circuit"];
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bkeyboard_key_presses_mechanical_switch -> u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bmechanical_switch_shorts_electrical_circuit;
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bkeyboard_hardware_sends_signal_across_USB_cable	[label="keyboard hardware sends signal across USB cable"];
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bmechanical_switch_shorts_electrical_circuit -> u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bkeyboard_hardware_sends_signal_across_USB_cable;
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Boperating_system_translates_signal_from_USB_cable	[label="operating system translates signal from USB cable"];
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Bkeyboard_hardware_sends_signal_across_USB_cable -> u_s_e_r__t_y_p_e_s__R_E_I_S_U_Boperating_system_translates_signal_from_USB_cable;
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Boperating_system_sends_key_to_infocus_application	[label="operating system sends key to in-focus application"];
+			u_s_e_r__t_y_p_e_s__R_E_I_S_U_Boperating_system_translates_signal_from_USB_cable -> u_s_e_r__t_y_p_e_s__R_E_I_S_U_Boperating_system_sends_key_to_infocus_application;
+		}
+		u_s_e_r__s_t_o_r_yuser_turns_off_the_computer	[style=invis];
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_ruser_pushes_power_button	[label="user pushes power button"];
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_rpower_button_short_circuits_wire	[label="power button short circuits wire"];
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_ruser_pushes_power_button -> u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_rpower_button_short_circuits_wire;
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_rmotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_rpower_button_short_circuits_wire -> u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_rmotherboard_does_something_to_CPU;
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_ruser_selects_shutdown_menu_option_on_desktop	[label="user selects shutdown menu option on desktop"];
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_roperating_system_terminates_desktop	[label="operating system terminates desktop"];
+		u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_ruser_selects_shutdown_menu_option_on_desktop -> u_s_e_r__t_u_r_n_s__o_f_f__t_h_e__c_o_m_p_u_t_e_roperating_system_terminates_desktop;
+	}
+	u_s_e_r__s_t_o_r_ycomputer_has_state_off -> u_s_e_r__s_t_o_r_yuser_turns_on_computer;
+	u_s_e_r__s_t_o_r_yuser_turns_on_computer -> u_s_e_r__s_t_o_r_ycomputer_has_state_turning_on;
+	u_s_e_r__s_t_o_r_ycomputer_has_state_turning_on -> u_s_e_r__s_t_o_r_yuser_browses_the_web;
+	u_s_e_r__s_t_o_r_yuser_browses_the_web -> u_s_e_r__s_t_o_r_ycomputer_has_state_idle;
+	u_s_e_r__s_t_o_r_ycomputer_has_state_idle -> u_s_e_r__s_t_o_r_yuser_turns_off_the_computer;
+	u_s_e_r__s_t_o_r_yuser_turns_off_the_computer -> u_s_e_r__s_t_o_r_ycomputer_has_state_off;
+}

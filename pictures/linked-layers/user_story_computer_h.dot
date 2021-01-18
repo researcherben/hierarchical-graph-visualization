@@ -1,0 +1,24 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_computer_hBIOS_boots_computer {
+		graph [label="BIOS boots computer"];
+		user_story_computer_hBIOS_boots_computer	[style=invis];
+		user_story_computer_hBIOS_boots_computerBIOS_detects_RAM	[label="BIOS detects RAM"];
+		user_story_computer_hBIOS_boots_computerBIOS_detects_hardware	[label="BIOS detects hardware"];
+		user_story_computer_hBIOS_boots_computerBIOS_detects_RAM -> user_story_computer_hBIOS_boots_computerBIOS_detects_hardware;
+		user_story_computer_hBIOS_boots_computerBIOS_loads_boot_sequence	[color=blue,
+			href="user_story_computer_h_BIOS_boots.svg",
+			label="BIOS loads boot sequence",
+			shape=rectangle];
+		user_story_computer_hBIOS_boots_computerBIOS_detects_hardware -> user_story_computer_hBIOS_boots_computerBIOS_loads_boot_sequence;
+	}
+	user_story_computer_hpower_button_short_circuits_wire	[label="power button short circuits wire"];
+	user_story_computer_hmotherboard_does_something_to_CPU	[label="motherboard does something to CPU"];
+	user_story_computer_hpower_button_short_circuits_wire -> user_story_computer_hmotherboard_does_something_to_CPU;
+	user_story_computer_hCPU_executes_BIOS_code_at_bottom_of_memory_map	[label="CPU executes BIOS code at bottom of memory map"];
+	user_story_computer_hmotherboard_does_something_to_CPU -> user_story_computer_hCPU_executes_BIOS_code_at_bottom_of_memory_map;
+	user_story_computer_hCPU_executes_BIOS_code_at_bottom_of_memory_map -> user_story_computer_hBIOS_boots_computer;
+	user_story_computer_hoperating_system_starts_desktop	[label="operating system starts desktop"];
+	user_story_computer_hBIOS_boots_computer -> user_story_computer_hoperating_system_starts_desktop;
+}

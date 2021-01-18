@@ -1,0 +1,17 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_user_brows_web_browse_web_browse_web_browse_operating_operating_system_sends_request_to_router {
+		graph [label="operating system sends request to router"];
+		user_story_user_brows_web_browse_web_browse_web_browse_operating_operating_system_sends_request_to_router	[style=invis];
+		"user_story_user_brows_web_browse_web_browse_web_browse_operating_operating_system_sends_request_to_routeroperating_system_implements_\
+TCP_connection_to_router"	[color=blue,
+			href="user_story_user_brows_web_browse_web_browse_web_browse_operating__operating_.svg",
+			label="operating system implements TCP connection to router",
+			shape=rectangle];
+	}
+	user_story_user_brows_web_browse_web_browse_web_browse_operating_router_checks_local_cache_on_router	[label="router checks local cache on router"];
+	user_story_user_brows_web_browse_web_browse_web_browse_operating_operating_system_sends_request_to_router -> user_story_user_brows_web_browse_web_browse_web_browse_operating_router_checks_local_cache_on_router;
+	user_story_user_brows_web_browse_web_browse_web_browse_operating_router_checks_the_ISP_cache	[label="router checks the ISP cache"];
+	user_story_user_brows_web_browse_web_browse_web_browse_operating_router_checks_local_cache_on_router -> user_story_user_brows_web_browse_web_browse_web_browse_operating_router_checks_the_ISP_cache;
+}

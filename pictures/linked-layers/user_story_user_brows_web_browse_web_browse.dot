@@ -1,0 +1,23 @@
+strict digraph {
+	graph [compound=true];
+	node [label="\N"];
+	subgraph cluster_user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cache {
+		graph [label="web browser checks the operating system cache"];
+		user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cache	[style=invis];
+		"user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheweb_browser_make_a_system_call_to_operating_\
+system"	[label="web browser make a system call to operating system"];
+		"user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheoperating_system_checks_the_local_cache_\
+in_OS"	[label="operating system checks the local cache in OS"];
+		"user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheweb_browser_make_a_system_call_to_operating_\
+system" -> "user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheoperating_system_checks_the_local_cache_\
+in_OS";
+		user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheoperating_system_checks_the_router_cache	[color=blue,
+			href="user_story_user_brows_web_browse_web_browse_web_browse.svg",
+			label="operating system checks the router cache",
+			shape=rectangle];
+		"user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheoperating_system_checks_the_local_cache_\
+in_OS" -> user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cacheoperating_system_checks_the_router_cache;
+	}
+	user_story_user_brows_web_browse_web_browseweb_browser_checks_the_browsers_inmemory_cache	[label="web browser checks the browser's in-memory cache"];
+	user_story_user_brows_web_browse_web_browseweb_browser_checks_the_browsers_inmemory_cache -> user_story_user_brows_web_browse_web_browseweb_browser_checks_the_operating_system_cache;
+}
