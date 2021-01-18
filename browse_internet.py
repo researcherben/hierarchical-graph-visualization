@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
 
+"""
+This data structure is intended to support a hypernode graph. 
 
-# assumptions:
-# * each tuple is represents a unique event or action or state
+
+assumptions:
+ * each tuple is a "node" in the graph and represents a unique event or action or state
+ * pairs of tuples form an edge
+ * a list of pairs-of-tuples form a graph
+ * each graph is named as a dictionary where key=name, value=list of edge pairs
+ * the overarching data structure is a list of dictionaries.
+"""
 
 def user_types_on_keyboard():
     """everytime the user uses the keyboard, this graph is implemented"""
