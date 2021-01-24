@@ -61,3 +61,5 @@ That led to the current data structure, a list of dictionaries. The key is the s
 https://github.com/LoW12/FractalGraph
 
 https://statecharts.github.io/
+
+https://xstate.js.org/docs/
