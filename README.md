@@ -58,10 +58,13 @@ That led to the current data structure, a list of dictionaries. The key is the s
 
 # Related similar projects
 
-https://github.com/LoW12/FractalGraph
+<https://github.com/LoW12/FractalGraph>
+
+<https://explained-from-first-principles.com/internet>
+
 
 "Statecharts: A Visual Formalism For Complex Systems" David Harel
 
-https://statecharts.github.io/
+<https://statecharts.github.io/>
 
-https://xstate.js.org/docs/
+<https://xstate.js.org/docs/>
